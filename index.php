@@ -12,7 +12,6 @@
     unset ($_SESSION['ifon']);
 
   }
-  //teste1
 ?>
 <style>
 
@@ -31,7 +30,6 @@
       <labe class="logintitulos">Senha:</label><br>
         <input class="loginfom" style="" name="senuso" type="password" required></input><br><br>
         <input style="" id="btnlogin" name="btnlo" type="submit" value="Entrar"></input>
-        <label> <a id="recuperarsenha" href="alterar_senha.php">Alterar senha</a> </label>
         <label id="copra" style="">&copy;2019 N.B.O<label>
     </form>
 
