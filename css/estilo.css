@@ -1,0 +1,272 @@
+@charset "UTF-8";
+*{
+	padding:0px;
+	margin: 0px;
+}
+body{
+background-color:	#0A2A29;
+}
+a{
+	text-decoration:none;
+	color: white;
+
+	display: block;
+	padding: 20px 5px;
+}
+ul{
+	list-style:none;
+}
+nav{
+	z-index:1;
+	position:absolute;
+	background-color: rgba(16,16,16,.5);
+	width:250px;
+	height:100%;
+}
+a:hover{
+background-color: red;
+color: black;
+}
+
+input{
+	font-size:30px;
+}
+#hu{
+  position:absolute;
+  height:100%;
+  width:1110px;
+  left:250px;
+  background-color: #50F0A8;
+
+}
+#tab{
+	overflow: auto;
+	height: 200px;
+	border:solid 1px;
+	position:absolute;
+	background-color: red;
+  width:1115px;
+  left:250px;
+	top:220px;
+
+}
+#tituhu{
+	font-size:20px;
+}
+#fo{
+	position:absolute;
+	height:100%;
+	width:1110px;
+	left:250px;
+	top:200px;
+	background-color: #ffcccc;
+}
+.infaluno{
+	color:black;
+	font-size: 20px;
+}
+.a1{
+font-size:30px;
+}
+#Tpesq{
+	position:absolute;
+	height:100%;
+	width:1110px;
+	left:250px;
+}
+#pesq_fom{
+	position:absolute;
+	left:50px;
+	top:30px;
+
+}
+#minhaTabela{
+  width:100%;
+	position:absolute;
+  margin:0 auto;
+  border:0;
+	top:25px;
+  box-shadow: 0 5px 30px darkgrey;
+  border-spacing: 0;
+}
+
+#minhaTabela thead th{
+  font-weight: bold;
+  background-color: black;
+  color:white;
+
+  padding:5px 10px;
+}
+#minhaTabela tr{
+	font-size: 20px;
+}
+#minhaTabela tr td{
+	font-size: 20px;
+  padding:5px 10px;
+  text-align: center;
+
+  cursor: pointer; /**importante para não mostrar cursor de texto**/
+}
+
+#minhaTabela tr td:last-child{
+  text-align: right;
+}
+
+/**Cores**/
+#minhaTabela tr:nth-child(odd){
+  background-color: #eee;
+}
+
+/**Cor quando passar por cima**/
+#minhaTabela tr:hover td{
+  background-color: #feffb7;
+}
+
+/**Cor quando selecionado**/
+#minhaTabela tr.selecionado td{
+  background-color: #aff7ff;
+}
+#bv{
+  display: none;
+}
+
+#visualizarDados{
+  background-color: white;
+  border: 1px solid black;
+position:absolute;
+	width: 200px;
+  margin: 10px auto;
+  padding:10px 0;
+  display: block;
+	left:250px;
+  color: black;
+		top:250px;
+}
+#tela_inicial_tes{
+	background-color: #0A2A29;
+	width: 118.5%;
+	position:absolute;
+
+	height:100%;
+}
+#cartinha{
+position:absolute;
+top:50px;
+font-size:50px;
+
+}
+#san{
+	position:absolute;
+	top:480px;
+left:750px;
+}
+#confirmacao{
+	position:absolute;
+	top:180px;
+left:50px;
+}
+#login{
+	position:absolute;
+	width: 500px;
+	height: 50%;
+	left: 400px;
+	top: 160px;
+	background-color:#50F0A8;
+}
+.loginfom{
+	width: 98%;
+
+}
+.logintitulos{
+	font-size:25px;
+}
+#btnlogin{
+	position:absolute;
+	width: 40%;
+	height: 15%;
+	left: 280px;
+}
+#logo{
+	background-color:red;
+	width: 118.5%;
+}
+#itu{
+	text-align: center;
+}
+#btntest{
+	top:100px;
+
+}
+#btntest1{
+		top:200px;
+}
+#btntest2{
+		top:300px;
+}
+.bntv1{
+	border: 1px solid black;
+	font-size: 30px;
+	position:absolute;
+	left: 350px;
+
+	background-color: black;
+	color:white;
+	height: 80px;
+	width: 50%;
+}
+.camp{
+	position:absolute;
+	top:50px;
+	left:0px;
+}
+#pesquisa{
+	position:absolute;
+	top:50px;
+	left:450px;
+}
+#pesquisa{
+	border: 1px solid black;
+	background-color: black;
+	color:white;
+}
+#tabn{
+	overflow: auto;
+	height: 300px;
+	border:solid 1px;
+	position:absolute;
+	background-color: #2EFEF7;
+  width:1115px;
+  left:250px;
+
+}
+.pes_nome_body{
+background-color: #0A2A29;
+
+}
+#sana{
+	position:absolute;
+	top:330px;
+left:700px;
+}
+#pgini1{
+background-color: #0A2A29;
+
+}
+.formataurd{
+	font-size:40px;
+	overflow: auto;
+	background-color:#666;
+	border-radius: 10px;
+	color: white;
+	height: 50px;
+	border:solid 1px;
+	position:absolute;
+	width:400px;
+
+
+}
+#form_alterar{
+position:absolute;
+background-color: white;
+
+}
