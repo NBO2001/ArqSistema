@@ -126,7 +126,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <label class="infaluno"><?php echo $row_usuario['Num_mat']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 <label style="color:#FE642E;" class="infaluno">Curso: &nbsp</label>
 <label class="infaluno"><?php echo $row_usuario['Cod_cur']; ?> -- &nbsp </label>
-<label style="color:#FE642E;" class="infaluno"><?php echo $row_usuario['Nome_cur']; ?></label><br>
+<label class="infaluno"><?php echo $row_usuario['Nome_cur']; ?></label><br>
 <label style="color:#FE642E;" class="infaluno">Forma de ingresso: &nbsp</label>
 <label  class="infaluno"><?php echo $row_usuario['Fin']; ?> &nbsp&nbsp | &nbsp</label>
 <label style="color:#FE642E;" class="infaluno">Ano de ingresso: &nbsp</label>
@@ -171,7 +171,8 @@ echo "<form method='POST' action='soli_pas.php'>
    <thead>
         <tr>
              <th>ID</th>
-             <th>Tipo do <br> documento</th>
+             <th>Classificação do <br> documento</th>
+             <th>Tipo de <br> documento</th>
              <th>Descrição</th>
              <th>Ano do documento</th>
              <th>Inserido em:</th>
@@ -189,8 +190,9 @@ echo "<form method='POST' action='soli_pas.php'>
               $resudata = $resudata[2]."-".$resudata[1]."-".$resudata[0];
               ?>
              <td><?php echo $row_usuarioa['id'];?></td>
-             <td><?php echo $row_usuarioa['tipo_doc']; ?></td>
-             <td><?php echo $row_usuarioa['nome']; ?></td>
+             <td style="font-size:15px;"><?php echo $row_usuarioa['tipo_doc']; ?></td>
+             <td style="font-size:17px;"><?php echo $row_usuarioa['class_doc']; ?></td>
+             <td style="font-size:17px;"><?php echo $row_usuarioa['nome']; ?></td>
              <td><?php echo $row_usuarioa['ano_doc']; ?></td>
              <td><?php echo $resudata; ?></td>
 

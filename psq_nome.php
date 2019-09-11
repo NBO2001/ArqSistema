@@ -8,7 +8,7 @@ $nomepes = filter_input(INPUT_POST,'nomeaa',FILTER_SANITIZE_STRING);
 if ($nomepes==""){
   header("Location:pg_pesquisa_nome.php");
 }else{
-  $result_usuario = "SELECT * FROM Alunos WHERE Nome_civil LIKE '%".$nomepes."%'";
+  $result_usuario = "SELECT * FROM Alunos WHERE Nome_civil LIKE '%".$nomepes."%' ORDER BY Nome_civil ASC";
   $resultado_usuario = mysqli_query($conn, $result_usuario);
   //$row_usuario = mysqli_fetch_array($resultado_usuario);
 

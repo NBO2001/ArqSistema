@@ -73,11 +73,18 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
 <div id="fo">
 
 <form method="Post" action="envia_banco.php"  enctype="multipart/form-data">
-  <label>Descrição*: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  <input type="text" name="nome" placeholder="Descreva a modificação" required><br><br>
+  <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <input type="text" name="nome" placeholder="Descreva a modificação"><br><br>
   <label>Selecione o arquivo:</label>
   <input id="arq" type="file" name="pdf" required><br><br>
-<label>Qual o tipo de documento:&nbsp;</label>
+  <label>Tipo de documento</label>
+  <select name="sele">
+    <option>Ficha Cadastral</option>
+    <option>Processo</option>
+    <option>Requerimento</option>
+    <option>TCE</option>
+  </select><br><br>
+<label>Classificação do documento:&nbsp;</label>
 <input type="text" name="assunto" id="assunto" placeholder="Pesquisar tipo de documento" required><br><br>
 <label>Ano do documento:&nbsp;</label>
 

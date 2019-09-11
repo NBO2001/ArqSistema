@@ -10,11 +10,16 @@
   if(isset($_SESSION['ifon'])){
     echo $_SESSION['ifon'];
     unset ($_SESSION['ifon']);
+
   }
 ?>
 <style>
+
 @media (max-width: 1000px) {
+
+
 }
+
 </style>
 </head>
 <body class="pes_nome_body">

@@ -11,6 +11,7 @@ include_once 'ConAL.php';
   $nome = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
   $ano = filter_input(INPUT_POST,'ano',FILTER_SANITIZE_STRING);
   $tipo_doc =filter_input(INPUT_POST,'assunto',FILTER_SANITIZE_STRING);
+  $tipo_docu = strtoupper( filter_input(INPUT_POST,'sele',FILTER_SANITIZE_STRING));
   $nome_arq =  $_FILES['pdf']['name'];
   $nome_arq  = explode('.',$nome_arq);
   $tipo_doc = explode (' ',$tipo_doc);
@@ -38,9 +39,6 @@ $_SESSION['ifon']="<script>alert('Tipo do documento invalido!!')</script>";
 }else if($nome_arq[1] <> "pdf"){
   header("Location:Pesquisa.php");
   $_SESSION['ifon'] = "<script>alert('Arquivo não suportado!!')</script>";
-}elseif ($nome =="") {
- header("Location:Pesquisa.php");
- $_SESSION['ifon']="<script>alert('Campo vazio!!')</script>";
 }else {
   $tipo_doc = $row_usuario['cod']." -- ".$row_usuario['nome_doc'];
   $fase_con =$row_usuario['fase_con'];
@@ -96,12 +94,9 @@ $tes = "
   fwrite($fp, $tes);
   fclose($fp);
 
-  $sql = "INSERT INTO Ko (id,nome, imagem,nome_pdf,tipo_doc,ano_doc,data_inserido,can,fase_con,fase_in,destin_fin,ano_ex,usuarioname) VALUES (NULL,'$nome', '$nun','$nome_pdf','$tipo_doc','$ano','$dataL','$can','$fase_con','$fase_in','$destin_fin',$ano_ex,'$usuarioname')";
-  echo $sql;
+  $sql = "INSERT INTO Ko (id,nome, imagem,nome_pdf,tipo_doc,ano_doc,data_inserido,can,fase_con,fase_in,destin_fin,ano_ex,usuarioname,class_doc) VALUES (NULL,'$nome', '$nun','$nome_pdf','$tipo_doc','$ano','$dataL','$can','$fase_con','$fase_in','$destin_fin',$ano_ex,'$usuarioname','$tipo_docu')";
   $rs = mysqli_query($conn,$sql);
   //passthru('sh test.sh');
-  $nome = utf8_encode ($nome);
-  $nome_pdf = utf8_encode ($nome_pdf);
 
   header("Location:Pesquisa.php");
   unset ($_SESSION['id']);
