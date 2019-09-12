@@ -15,11 +15,17 @@ if($_SESSION['msg']== 1 or $_SESSION['msg']== 2 or $_SESSION['msg']== "" ) {
 //header("Content-Type: text/html; charset=UTF-8");
  //ini_set('default_charset','UTF-8');
  include_once "ConAL.php";
- $nun = filter_input(INPUT_POST,'nume',FILTER_SANITIZE_STRING);
- if($nun==""){
-   header("Location:Pesquisa.php");
- }
- $result_usuario = "SELECT * FROM Alunos WHERE Num_mat LIKE '".$nun."'";
+ //$nun = filter_input(INPUT_POST,'nume',FILTER_SANITIZE_STRING);
+ //if($nun==""){
+//   header("Location:Pesquisa.php");
+ //}
+ $id = $_SESSION['id'];
+ if($id==""){
+
+  $_SESSION['ifon'] = "<script>alert('Ocorreu um erro!!')</script>";
+  header("Location:Pesquisa.php");
+}else{
+ $result_usuario = "SELECT * FROM Alunos WHERE id LIKE '".$id."'";
  $resultado_usuario = mysqli_query($conn, $result_usuario);
  $row_usuario = mysqli_fetch_assoc($resultado_usuario);
  if ($row_usuario['id'] == ""){
@@ -27,6 +33,7 @@ header("Location:Pesquisa.php");
 $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
  }else{
  $_SESSION['id'] = $row_usuario['id'];
+}
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +53,6 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
         <li><a href="pg_ini1.php">Inicio</a></li>
     		<li><a href="pg_pesquisa.php">Pesquisa por matrícula</a></li>
         <li><a href="pg_pesquisa_nome.php">Pesquisa por nome</a></li>
-        <li><a href='Pesquisa.php'>Inseir documento</a></li>
         <li><a href='sair.php'>Sair</a></li>
     		</ul>
     </nav>
@@ -60,14 +66,6 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
   <label class="infaluno">Curso: &nbsp</label>
   <label class="infaluno"><?php echo $row_usuario['Cod_cur']; ?> -- &nbsp </label>
   <label class="infaluno"><?php echo $row_usuario['Nome_cur']; ?></label><br>
-  <label class="infaluno">Forma de ingresso: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Fin']; ?></label><br>
-  <label class="infaluno">Forma de evasão: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Fev']; ?></label><br>
-  <label class="infaluno">Ano de ingresso: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Ain']; ?></label><br>
-  <label class="infaluno">Ano de evsão: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Aev']; ?></label><br>
 </div>
 
 <div id="fo">

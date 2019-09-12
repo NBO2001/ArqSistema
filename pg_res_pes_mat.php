@@ -60,6 +60,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
             $_SESSION['id'] = $row_usuario['id'];
             $result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '".$_SESSION['id']."'";
             $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
+
             }
             }
     }
@@ -93,21 +94,19 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
        }else if($_SESSION['msg']==2){
          if($row_usuario['STS'] == 1){
            echo "<li><a href='devolucao.php'>Emprestimo/Devolução</a></li>";
-           echo "<li><a href='#'>Histórico de emprestimos</a></li>";
            echo "<li><a href='sair.php'>Sair</a></li>";
          }else{
          echo "<li><a href='empr.php'>Emprestimo/Devolução</a></li>";
-         echo "<li><a href='#'>Histórico de emprestimos</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";
        }}else if($_SESSION['msg']== 3 or 4){
          if($row_usuario['STS'] == 1){
            echo "<li><a href='devolucao.php'>Emprestimo/Devolução</a></li>";
-           echo "<li><a href='#'>Histórico de emprestimos</a></li>";
+           echo "<li><a href='enviar.php'>Inserir documento</a></li>";
            echo "<li><a href='alter_registro.php'>Altera registro</a></li>";
            echo "<li><a href='sair.php'>Sair</a></li>";
          }else{
          echo "<li><a href='empr.php'>Emprestimo/Devolução</a></li>";
-         echo "<li><a href='#'>Histórico de emprestimos</a></li>";
+         echo "<li><a href='enviar.php'>Inserir documento</a></li>";
          echo "<li><a href='alter_registro.php'>Altera registro</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";}
        }
@@ -119,7 +118,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <div id="hu" >
 <h1 id="tituhu">Informações do aluno:</h1>
 <label style="color:#FE642E;" class="infaluno">Nome civil: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Nome_civil']; ?></label><br>
+<label class="infaluno"><?php echo $row_usuario['Nome_civil'];?></label><br>
 <label style="color:#FE642E;" class="infaluno">Nome social: &nbsp</label>
 <label class="infaluno"><?php echo $row_usuario['Nome_social']; ?></label><br>
 <label style="color:#FE642E;" class="infaluno">Matrícula: &nbsp</label>
@@ -130,7 +129,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <label style="color:#FE642E;" class="infaluno">Forma de ingresso: &nbsp</label>
 <label  class="infaluno"><?php echo $row_usuario['Fin']; ?> &nbsp&nbsp | &nbsp</label>
 <label style="color:#FE642E;" class="infaluno">Ano de ingresso: &nbsp</label>
-<label  class="infaluno"><?php echo $row_usuario['Ain']; ?></label><br>
+<label  class="infaluno"><?php echo $row_usuario['Ain']; $_SESSION['id']=$row_usuario['id']; ?></label><br>
 
 <label style="color:#FE642E;" class="infaluno">Forma de evasão: &nbsp</label>
 <label class="infaluno"><?php echo $row_usuario['Fev']; ?>&nbsp&nbsp | &nbsp</label>
@@ -138,7 +137,6 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <label class="infaluno"><?php echo $row_usuario['Aev']; ?>&nbsp&nbsp | &nbsp</label>
 <label style="color:#FE642E;" class="infaluno">Dados retirados do: &nbsp</label>
 <label class="infaluno"><?php echo $row_usuario['sistema']; ?></label><br>
-
 <label class="infaluno"><?php
 if($row_usuario['STS'] == 1){
   echo "<span style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVISO:A pasta não está no arquivo</span>";

@@ -106,15 +106,12 @@ if($_SESSION['setor']=="Arquivo acadêmico"){
  echo"<form  action='#'>
   <button class='bntv1' style='top:300px' id='btntest3'>Emprestimo de pasta</button>
 </form>";
-echo"<form  action='Pesquisa.php'>
- <button class='bntv1' style='top:400px' id='btntest3'>Inserir documento</button>
-</form>";
 if($_SESSION['setor']=="Arquivo acadêmico"){
   echo"<form  action='mensa_re.php'>
-   <button class='bntv1' style='top:500px' id='btntest4'>Mensagem[$nun_msg]</button>
+   <button class='bntv1' style='top:400px' id='btntest4'>Mensagem[$nun_msg]</button>
   </form>";
   echo"<form  action='sair.php'>
-    <button style='top:600px' class='bntv1' id='btntest2'>Sair</button>
+    <button style='top:500px' class='bntv1' id='btntest2'>Sair</button>
   </form>";
 }else{
   echo"<form  action='sair.php'>
@@ -125,19 +122,16 @@ if($_SESSION['setor']=="Arquivo acadêmico"){
  echo"<form  action='#'>
   <button class='bntv1' style='top:300px' id='btntest3'>Emprestimo de pasta</button>
 </form>";
-echo"<form  action='Pesquisa.php'>
- <button class='bntv1' style='top:400px' id='btntest3'>Inserir documento</button>
-</form>";
 
 if($_SESSION['setor']=="Arquivo acadêmico"){
   echo"<form  action='mensa_re.php'>
-   <button class='bntv1' style='top:500px' id='btntest4'>Mensagem[$nun_msg]</button>
+   <button class='bntv1' style='top:400px' id='btntest4'>Mensagem[$nun_msg]</button>
   </form>";
   echo"<form  action='admini.php'>
-   <button class='bntv1' style='top:600px' id='btntest3'>Ferramentas administrativas</button>
+   <button class='bntv1' style='top:500px' id='btntest3'>Ferramentas administrativas</button>
   </form>";
   echo"<form  action='sair.php'>
-    <button style='top:700px' class='bntv1' id='btntest2'>Sair</button>
+    <button style='top:600px' class='bntv1' id='btntest2'>Sair</button>
   </form>";
 }else{
 echo"<form  action='admini.php'>

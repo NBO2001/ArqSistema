@@ -98,7 +98,8 @@ $tes = "
   $rs = mysqli_query($conn,$sql);
   //passthru('sh test.sh');
 
-  header("Location:Pesquisa.php");
+  header("Location:pg_res_pes_mat.php");
+  $_SESSION['retorno'] = $_SESSION['id'];
   unset ($_SESSION['id']);
   $_SESSION['ifon'] = "<script>alert('Salvo com sucesso!!')</script>";
 }
