@@ -17,32 +17,28 @@ include_once 'ConAL.php';
 <meta charset="utf=8">
 <meta http-equiv="refresh" content="30">
 <title>Tela inicial</title>
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+<link rel="stylesheet" type="text/css" href="css/es.css">
 <style>
-@media (max-width: 1000px) {
-  .bntv1{
-    position:static;
-  	border: 1px solid black;
-  	font-size: 600%;
-  	left: 0%;
-  	background-color: #032490;
-  	color:white;
-  	height: 20%;
-  	width: 100%;
-    padding:20px 10px;
-    border: 1px solid white;
-    border-radius: 20px;
-
-  }
-
-
+#logoufam{
+  background-color: <?php echo $_SESSION['sa4'] ?>;
 }
-
-
+#pgini1{
+	background-color: <?php echo $_SESSION['sa1'] ?>;
+}
+.bntv1{
+	background-color:<?php echo $_SESSION['sa2'] ?>;
+	color:<?php echo $_SESSION['sa3'] ?>;
+}
+@media (max-width: 1000px) {
+	#sty{
+		display:none;
+	}
 }
 </style>
 </head>
 <body id="pgini1">
+
 <?php if($_SESSION['setor']=="Arquivo acadêmico"){
   $result_usuarioa = "SELECT sts,count(sts) FROM mensa WHERE sts LIKE '1' GROUP BY sts";
   $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
@@ -65,86 +61,122 @@ include_once 'ConAL.php';
 }
 
 ?>
-<div id = "logo">
-<h1 id="itu">------  Arquivo acadêmico - PROEG  --------</h1>
+<div id="logoufam">
+<img width="100px" height="90px" src="ufam.png"/>
+<label id="insti">Universidade Federal do Amazonas<br>
+Pró-Reitoria de Ensino de Graduação<br>
+Departamento de Registro Acadêmico<br>
+Arquivo Acadêmico<br>
+</label>
 </div>
 
 <div id="tela_inicial_tes" >
 <form  action="pg_pesquisa.php">
   <button class="bntv1" id="btntest">Pesquisa por matrícula</button>
-</form>
+</form><br>
 <form  action="pg_pesquisa_nome.php">
   <button class="bntv1" id="btntest1">Pesquisa por nome</button>
-</form>
+</form><br>
 <?php
 if($_SESSION['msg']==1){
   echo"<form  action='mensa_visu.php'>
-   <button style='top:48%;' class='bntv1' id='btntest4'>Mensagem[$nun_msg]</button>
-  </form>";
+   <button class='bntv1' id='btntest4'>Mensagem[$nun_msg]</button>
+  </form><br>";
   echo"<form  action='sair.php'>
-    <button style='top:65%;' class='bntv1' id='btntest2'>Sair</button>
-  </form>";
+    <button class='bntv1' id='btntest2'>Sair</button>
+  </form><br>";
 }else if ($_SESSION['msg']==2){
  echo"<form  action='#'>
-  <button class='bntv1' style='top:300px' id='btntest3'>Emprestimo de pasta</button>
-</form>";
+  <button class='bntv1' id='btntest3'>Emprestimo de pasta</button>
+</form><br>";
 
 if($_SESSION['setor']=="Arquivo acadêmico"){
   echo"<form  action='mensa_re.php'>
-   <button class='bntv1' style='top:400px' id='btntest4'>Mensagem[$nun_msg]</button>
-  </form>";
+   <button class='bntv1'  id='btntest4'>Mensagem[$nun_msg]</button>
+  </form><br>";
   echo"<form  action='sair.php'>
-    <button style='top:500px' class='bntv1' id='btntest2'>Sair</button>
-  </form>";
+    <button  class='bntv1' id='btntest2'>Sair</button>
+  </form><br>";
 }else{
   echo"<form  action='sair.php'>
-    <button style='top:400px' class='bntv1' id='btntest2'>Sair</button>
-  </form>";
+    <button  class='bntv1' id='btntest2'>Sair</button>
+  </form><br>";
 }
 
 }else if ($_SESSION['msg']==3){
  echo"<form  action='#'>
-  <button class='bntv1' style='top:300px' id='btntest3'>Emprestimo de pasta</button>
-</form>";
+  <button class='bntv1'  id='btntest3'>Emprestimo de pasta</button>
+</form><br>";
 if($_SESSION['setor']=="Arquivo acadêmico"){
   echo"<form  action='mensa_re.php'>
-   <button class='bntv1' style='top:400px' id='btntest4'>Mensagem[$nun_msg]</button>
-  </form>";
+   <button class='bntv1'  id='btntest4'>Mensagem[$nun_msg]</button>
+  </form><br>";
   echo"<form  action='sair.php'>
-    <button style='top:500px' class='bntv1' id='btntest2'>Sair</button>
-  </form>";
+    <button  class='bntv1' id='btntest2'>Sair</button>
+  </form><br>";
 }else{
   echo"<form  action='sair.php'>
-    <button style='top:500px' class='bntv1' id='btntest2'>Sair</button>
-  </form>";
+    <button  class='bntv1' id='btntest2'>Sair</button>
+  </form><br>";
 }
 }else if ($_SESSION['msg']==4){
  echo"<form  action='#'>
-  <button class='bntv1' style='top:300px' id='btntest3'>Emprestimo de pasta</button>
-</form>";
+  <button class='bntv1'  id='btntest3'>Emprestimo de pasta</button>
+</form><br>";
 
 if($_SESSION['setor']=="Arquivo acadêmico"){
   echo"<form  action='mensa_re.php'>
-   <button class='bntv1' style='top:400px' id='btntest4'>Mensagem[$nun_msg]</button>
-  </form>";
+   <button class='bntv1'  id='btntest4'>Mensagem[$nun_msg]</button>
+  </form><br>";
   echo"<form  action='admini.php'>
-   <button class='bntv1' style='top:500px' id='btntest3'>Ferramentas administrativas</button>
-  </form>";
+   <button class='bntv1' id='btntest3'>Ferramentas administrativas</button>
+  </form><br>";
   echo"<form  action='sair.php'>
-    <button style='top:600px' class='bntv1' id='btntest2'>Sair</button>
-  </form>";
+    <button class='bntv1' id='btntest2'>Sair</button>
+  </form><br>";
 }else{
 echo"<form  action='admini.php'>
- <button class='bntv1' style='top:500px' id='btntest3'>Ferramentas administrativas</button>
-</form>";
+ <button class='bntv1' id='btntest3'>Ferramentas administrativas</button>
+</form><br>";
 echo"<form  action='sair.php'>
-  <button style='top:600px' class='bntv1' id='btntest2'>Sair</button>
-</form>";
+  <button class='bntv1' id='btntest2'>Sair</button>
+</form><br>";
 }
 }
 ?>
 
 
 </div>
+<div id="sty">
+<form method="POST">
+  <label>Cor cabeçalho:</label>
+  <input name="fun4" type="text" value="<?php if(isset($_SESSION['sa4'])){echo $_SESSION['sa4'];} ?>"><br>
+<label>Fundo:</label>
+<input name="fun1" type="text" value="<?php if(isset($_SESSION['sa1'])){echo $_SESSION['sa1'];} ?>"><br>
+<label>Botão:</label>
+<input name="fun2" type="text" value="<?php  if(isset($_SESSION['sa2'])){ echo $_SESSION['sa2'];} ?>"><br>
+<label>Letra do botão:</label>
+<input type="text" name="fun3" value="<?php  if(isset($_SESSION['sa3'])){ echo $_SESSION['sa3'];} ?>"><br>
+<input type="submit" value="testar">
+</form>
+</div>
+<label id="copra" style="">&copy;2019 N.B.O<label>
 </body>
 </html>
+<?php
+$a1 = filter_input(INPUT_POST,"fun1",FILTER_SANITIZE_STRING);
+$a2 = filter_input(INPUT_POST,'fun2',FILTER_SANITIZE_STRING);
+$a3 = filter_input(INPUT_POST,'fun3',FILTER_SANITIZE_STRING);
+$a4 = filter_input(INPUT_POST,'fun4',FILTER_SANITIZE_STRING);
+if($a1 <> "" or $a2 <>"" or $a3 <>""){
+  $_SESSION['sa1'] = $a1;
+  $_SESSION['sa2'] = $a2;
+  $_SESSION['sa3'] = $a3;
+  $_SESSION['sa4'] = $a4;
+  header("Location:pg_ini1.php");
+}
+
+
+
+
+ ?>

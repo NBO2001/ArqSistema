@@ -22,7 +22,14 @@ nav{
 	background-color: rgba(16,16,16,.5);
 	width:250px;
 	height:100%;
+	left: -250px;
+
 }
+#chec:checked ~ #nave
+{
+transform: translateX(250px);
+}
+
 a:hover{
 background-color: red;
 color: black;
@@ -133,8 +140,8 @@ color: black;
 }
 #copra{
   position: absolute;
-   top:90%;
-  font-size:80%;
+   top:100%;
+  font-size:15px;
 }
 #recuperarsenha{
 	position: absolute;
@@ -151,4 +158,63 @@ color: black;
 a#recuperarsenha:hover{
 background-color: inherit;
 color: red;
+}
+#logoufam{
+height:100%;
+background-color: #708090;
+}
+#insti{
+	position: absolute;
+	font-size: 19px;
+	height:105px;
+	width:400px;
+}
+#pgini1{
+	background-color: #B0C4DE;
+}
+.bntv1{
+	background-color:black;
+	color:white;
+	height: 80px;
+	width: 600px;
+	font-size: 30px;
+	border: 1px solid black;
+	border-radius: 20px;
+}
+
+#chec{
+display: none;
+}
+
+#tela_inicial_tes{
+	position:absolute;
+	top:120px;
+	left: 25%;
+	height:500px;
+	width:600px;
+}
+@media (max-width: 1000px) {
+	#sty{
+		color:red;
+	}
+
+  .bntv1{
+    position:static;
+  	border: 1px solid black;
+  	font-size: 600%;
+  	left: 0%;
+  	background-color: #032490;
+  	color:white;
+  	height: 240px;
+  	width: 850px;
+    padding:20px 10px;
+    border: 1px solid white;
+    border-radius: 20px;
+
+  }
+
+
+}
+
+
 }

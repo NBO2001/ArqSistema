@@ -23,7 +23,9 @@
 </style>
 </head>
 <body class="pes_nome_body">
+
   <div id="login">
+
     <form method="Post" action="logina.php" enctype="multipart/form-data">
       <labe class="logintitulos"  >Login:</label><br>
         <input id="logion1"  name="nuso" style="" class="loginfom" type="text" required></input><br>
