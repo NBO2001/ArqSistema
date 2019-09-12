@@ -49,6 +49,9 @@ include_once "ConAL.php";
           <option>CRC</option>
           <option>CRD</option>
           <option>CM</option>
+	  <option>COA</option>
+         <option>DPA</option>
+	<option>Protocolo</option>
         </select><br><br>
         <label style='left:200px;top:350;' class='formataurd'>Digite a senha:</label>
         <input class='formataurd' style='left:600px;top:350;' type='text' name='senhauso' required><br><br>
