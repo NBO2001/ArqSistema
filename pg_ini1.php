@@ -20,16 +20,6 @@ include_once 'ConAL.php';
 
 <link rel="stylesheet" type="text/css" href="css/es.css">
 <style>
-#logoufam{
-  background-color: <?php echo $_SESSION['sa4'] ?>;
-}
-#pgini1{
-	background-color: <?php echo $_SESSION['sa1'] ?>;
-}
-.bntv1{
-	background-color:<?php echo $_SESSION['sa2'] ?>;
-	color:<?php echo $_SESSION['sa3'] ?>;
-}
 @media (max-width: 1000px) {
 	#sty{
 		display:none;
@@ -147,36 +137,6 @@ echo"<form  action='sair.php'>
 
 
 </div>
-<div id="sty">
-<form method="POST">
-  <label>Cor cabeçalho:</label>
-  <input name="fun4" type="text" value="<?php if(isset($_SESSION['sa4'])){echo $_SESSION['sa4'];} ?>"><br>
-<label>Fundo:</label>
-<input name="fun1" type="text" value="<?php if(isset($_SESSION['sa1'])){echo $_SESSION['sa1'];} ?>"><br>
-<label>Botão:</label>
-<input name="fun2" type="text" value="<?php  if(isset($_SESSION['sa2'])){ echo $_SESSION['sa2'];} ?>"><br>
-<label>Letra do botão:</label>
-<input type="text" name="fun3" value="<?php  if(isset($_SESSION['sa3'])){ echo $_SESSION['sa3'];} ?>"><br>
-<input type="submit" value="testar">
-</form>
-</div>
 <label id="copra" style="">&copy;2019 N.B.O<label>
 </body>
 </html>
-<?php
-$a1 = filter_input(INPUT_POST,"fun1",FILTER_SANITIZE_STRING);
-$a2 = filter_input(INPUT_POST,'fun2',FILTER_SANITIZE_STRING);
-$a3 = filter_input(INPUT_POST,'fun3',FILTER_SANITIZE_STRING);
-$a4 = filter_input(INPUT_POST,'fun4',FILTER_SANITIZE_STRING);
-if($a1 <> "" or $a2 <>"" or $a3 <>""){
-  $_SESSION['sa1'] = $a1;
-  $_SESSION['sa2'] = $a2;
-  $_SESSION['sa3'] = $a3;
-  $_SESSION['sa4'] = $a4;
-  header("Location:pg_ini1.php");
-}
-
-
-
-
- ?>

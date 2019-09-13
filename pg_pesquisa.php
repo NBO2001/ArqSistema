@@ -22,6 +22,10 @@ if($_SESSION['msg']==""){
       unset ($_SESSION['ifon']);
 
     }
+    if(isset($_SESSION['retorno'])){
+      unset ($_SESSION['retorno']);
+
+    }
   ?>
 
   <div id="logoufam" >

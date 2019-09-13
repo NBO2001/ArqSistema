@@ -85,7 +85,6 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
 <label>Classificação do documento:&nbsp;</label>
 <input type="text" name="assunto" id="assunto" placeholder="Pesquisar tipo de documento" required><br><br>
 <label>Ano do documento:&nbsp;</label>
-
 <input id="ano" name="ano" value="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>" type="number" min="1900" max="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>" required>
 
 <input id= "san" name="sand" type="submit" value="Cadastrar">

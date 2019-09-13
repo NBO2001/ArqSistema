@@ -3,6 +3,10 @@ session_start();
 if($_SESSION['msg']==""){
   header("Location:index.php");
 }
+if(isset($_SESSION['retorno'])){
+  unset ($_SESSION['retorno']);
+
+}
  ?>
 <!DOCTYPE HTML>
 

@@ -20,7 +20,7 @@ $result_usuario = "SELECT * FROM Alunos WHERE id LIKE '$nume_dupli'";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 $row_usuario = mysqli_fetch_array($resultado_usuario);
 
-$result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '$nume_dupli'";
+$result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '$nume_dupli' ORDER BY ano_doc ASC";
 $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 
 
@@ -32,7 +32,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
     $resultado_usuario = mysqli_query($conn, $result_usuario);
     $row_usuario = mysqli_fetch_array($resultado_usuario);
 
-    $result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '$nume_dupli'";
+    $result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '$nume_dupli' ORDER BY ano_doc ASC";
     $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 
 
@@ -58,7 +58,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
               $_SESSION['ifon'] = "<script>alert('Nenhum registro encontrado')</script>";
             }else{
             $_SESSION['id'] = $row_usuario['id'];
-            $result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '".$_SESSION['id']."'";
+            $result_usuarioa = "SELECT * FROM Ko WHERE imagem LIKE '".$_SESSION['id']."' ORDER BY ano_doc ASC";
             $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 
             }
@@ -71,6 +71,8 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
 <?php
 
 ?>
@@ -134,7 +136,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <label style="color:#FE642E;" class="infaluno">Forma de evasão: &nbsp</label>
 <label class="infaluno"><?php echo $row_usuario['Fev']; ?>&nbsp&nbsp | &nbsp</label>
 <label style="color:#FE642E;" class="infaluno">Ano de evsão: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Aev']; ?>&nbsp&nbsp | &nbsp</label>
+<label class="infaluno"><?php if($row_usuario['Aev']==""){echo "Sem evasão";}else{ echo $row_usuario['Aev'];} ?>&nbsp&nbsp | &nbsp</label>
 <label style="color:#FE642E;" class="infaluno">Dados retirados do: &nbsp</label>
 <label class="infaluno"><?php echo $row_usuario['sistema']; ?></label><br>
 <label class="infaluno"><?php
@@ -158,13 +160,19 @@ echo "<form method='POST' action='soli_pas.php'>
 
 
 <form method="POST" action="pdf_visu.php" target="_blank">
-  <input id="bv" type="text" name="nome">
+  <input  id="bv" type="text" name="nome">
   <input id= "san" name="sand" type="submit" value="Visualizar">
 </form>
-
+<?php
+if($_SESSION['msg']==4){
+echo "<form method='POST'>
+  <input style='display:none;' id='bva' type='text' name='bvaa'>
+  <input style='position:absolute;top:450px;left:300px;' name='valoralter' type='submit' value='Alterar'>
+</form>";
+}
+?>
 </div>
 <div id="tab">
-<h1 id="tituhu" >Conteúdo da pasta:<h1>
 <table id='minhaTabela'>
    <thead>
         <tr>
@@ -202,7 +210,16 @@ echo "<form method='POST' action='soli_pas.php'>
 
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+<script>
+    $(function () {
+        $("#assunto").autocomplete({
+            source: 'proc_pesq_msg.php'
+        });
+    });
+</script>
 <script type="text/javascript">
   var tabela = document.getElementById("minhaTabela");
 var linhas = tabela.getElementsByTagName("tr");
@@ -263,10 +280,68 @@ var d = selecionado[0].innerHTML;
 
 //alert(dados);
 document.getElementById("bv").value = d;
+document.getElementById("bva").value = d;
 //document.getElementById("confirmacao").innerHTML ="Deseja visualizar o arquivo de id:" + d +"?";
 
 });
 
 </script>
+<?php
+$valor_pesquisa = filter_input(INPUT_POST,'bvaa',FILTER_SANITIZE_STRING);
+$_SESSION['retorno'] = $row_usuario['id'];
+if($valor_pesquisa<>""){
+  $alterdoc = "SELECT * FROM Ko WHERE id LIKE '".$valor_pesquisa."'";
+  $res_alter_doc = mysqli_query($conn, $alterdoc);
+  $linhaa= mysqli_fetch_array($res_alter_doc);
+  $iad = $linhaa['imagem'];
+  $data=date('Y-m-d');
+  $par = explode('-',$data);
+  if($linhaa['class_doc']=="TCE"){
+    $va1 = 'selected';
+    $va2 = "";
+    $va3 = "";
+  }else if($linhaa['class_doc']=="REQUERIMENTO"){
+    $va1 = "";
+    $va2 = 'selected';
+    $va3 = "";
+  }else if($linhaa['class_doc']=="PROCESSO"){
+    $va1 = "";
+    $va2 = "";
+    $va3 = 'selected';
+  }else{
+    $va1 = "";
+    $va2 = "";
+    $va3 = "";
+  }
+  $clasfi = $linhaa['tipo_doc'];
+  $decricao= $linhaa['nome'];
+  $anodic= $linhaa['ano_doc'];
+
+  echo "<div style='position: absolute;left:30%;top:20%; height:500px;width:800px;background-color:white;'>
+    <form method='POST'  action='alterar_documento.php'>
+    <input type='text' name='idrecurera' style='display:none;' value='$valor_pesquisa' readonly>
+      <label>Classificação do documento:&nbsp;</label>
+      <input type='text' name='classfi' id='assunto' placeholder='Pesquisar tipo de documento' value='$clasfi' required><br><br>
+      <label>Tipo de documento</label>
+      <select name='sele'>
+        <option>Ficha Cadastral </option>
+        <option $va3>Processo</option>
+        <option $va2>Requerimento</option>
+        <option $va1>TCE</option>
+      </select><br><br>
+      <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type='text' name='descricao' value='$decricao' placeholder='Descreva a modificação'><br><br>
+      <label>Ano do documento:&nbsp;</label>
+      <input id='ano' name='ano' value='$anodic' type='number' min='1900' max='$par[0]' required>
+      <input type='submit' id='vol' value='Salvar'>
+    </form>
+    <form method='POST' >
+    <input type='submit' value='voltar' >
+    </form>
+
+  </div>";
+}
+
+?>
 </body>
 </html>
