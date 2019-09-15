@@ -63,6 +63,7 @@ $vl ="UPDATE Ko SET nome = '$descricao', tipo_doc = '$classfi', ano_doc = '$ano'
 $rvl = mysqli_query($conn, $vl) or die(mysqli_error($conn));
 
 header("Location:pg_res_pes_mat.php");
+$_SESSION['ref'] = "<script>window.location.reload();</script>";
 $_SESSION['ifon'] = "<script>alert('Alterado com sucesso!!')</script>";
 
 ?>

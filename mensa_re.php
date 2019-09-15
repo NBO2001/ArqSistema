@@ -3,6 +3,11 @@ session_start();
 if($_SESSION['msg'] == ""){
   header("Location:index.php");
 }
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}
 include_once "ConAL.php";
 $result_usuario = "SELECT * FROM mensa WHERE sts LIKE '1'";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
@@ -12,7 +17,12 @@ $resultado_usuario = mysqli_query($conn, $result_usuario);
 <html lang=pt-br>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" type="text/css" href="css/es.css">
+<?php
+if($_COOKIE["tema"] <> "a"){
+  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+}
+?>
 
 <title>Mensagens</title>
 <?php
@@ -24,10 +34,29 @@ $resultado_usuario = mysqli_query($conn, $result_usuario);
 ?>
 </head>
 <body>
-  <div style="width: 1400px;" id = "logo">
-  <h1 id="itu" >------  Arquivo acadêmico - PROEG  --------</h1>
+  <div id="logoufam" >
+
+  <label for="chec">
+  <img width="100px" height="90px" src="ufam.png"/>
+  </label>
+  <label id="insti">Universidade Federal do Amazonas<br>
+  Pró-Reitoria de Ensino de Graduação<br>
+  Departamento de Registro Acadêmico<br>
+  Arquivo Acadêmico<br>
+  </label>
   </div>
-<div style="overflow: auto;height: 200px;border:solid 1px;position:absolute;width:1115px;left:150px;top:40px;">
+  <div>
+  <input type="checkbox" id="chec">
+  <nav id="nave" >
+      <ul>
+        <li><a href="pg_ini1.php">Inicio</a></li>
+        <li><a href="pg_pesquisa.php">Pesquisa por matrícula</a></li>
+        <li><a href="pg_pesquisa_nome.php">Pesquisa por nome</a></li>
+      <li><a href="sair.php">Sair</a></li>
+      </ul>
+  </nav>
+  </div>
+<div id="stymensare" >
 <table style="position:absolute;top:0px;" id='minhaTabela'>
    <thead>
         <tr>
@@ -56,19 +85,27 @@ $resultado_usuario = mysqli_query($conn, $result_usuario);
    </tbody>
 </table>
 </div>
-<div>
+<div id="btnmensavisu">
 <form method="POST">
   <input id="bv" type="text" name="nome">
-  <input id= "san" style="position:absolute;width:290px;left:610px;top:260px;"name="sand" type="submit" value="Escrever mensagem">
+  <input id="btn111" name="sand" type="submit" value="Escrever mensagem">
 </form>
-<form method="POST" action="mensa_re_fun.php">
+<form method="POST">
   <input id="bv1" type="text" name="ida" style="display:none;" readonly>
-  <input id= "san" style="position:absolute;width:270px;left:910px;top:260px;" type="submit" value="Aceitar solicitação">
+  <input id="btn112"  type="submit" value="Abrir detalhes">
 </form>
 <form method="POST" action="pg_ini1.php">
-  <input id= "san" style="position:absolute;width:120px;left:480px;top:260px;" name="sand" type="submit" value="Voltar">
+  <input id="btn113"   name="sand" type="submit" value="Voltar">
 </form>
 </div>
+<?php
+$ida = filter_input(INPUT_POST,'ida',FILTER_SANITIZE_STRING);
+if($ida <> ""){
+$ida = explode('.',$ida);
+$_SESSION['retorno'] = $ida[1];
+header("Location:pg_res_pes_mat.php");
+}
+?>
 
 <?php $nun = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
 if($nun <> ""){
@@ -80,7 +117,7 @@ if($nun <> ""){
     if ($linha['id']==""){
       echo "<script>alert('Usuario não existe!!')</script>";
     }else{
-      echo " <form method='POST' action='mensa_re_fun.php'>
+      echo " <form id='msgevia' method='POST' action='mensa_re_fun.php'>
       <input class='formataurd' style='display:none;' type='text' name='ida' value='$ida' readonly><br><br>
       <label class='formataurd' style='left:0px;top:380;font-size:35px;'>Digite a mensagem:</label>
        <input class='formataurd' style='left:410px;top:380;' type='text' name='msg_ida'><br><br>
@@ -122,9 +159,11 @@ var selecionado = selecionados[i];
 selecionado = selecionado.getElementsByTagName("td");
 dados += "ID: " + selecionado[0].innerHTML + " - Nome: " + selecionado[1].innerHTML + " - Idade: " + selecionado[2].innerHTML + "\n";
 var d = selecionado[0].innerHTML;
+var da = selecionado[3].innerHTML;
 }
 document.getElementById("bv").value = d;
-document.getElementById("bv1").value = d;
+
+document.getElementById("bv1").value = da;
 });
 
 </script>

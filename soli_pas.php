@@ -1,30 +1,61 @@
 <?php
 session_start();
 include_once 'ConAL.php';
-  $codcur = filter_input(INPUT_POST,"Num_mat",FILTER_SANITIZE_STRING);
+  $codcur = $_SESSION['Num_mat'];
 
 ?>
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" type="text/css" href="css/es.css">
+<?php
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}
+if($_COOKIE["tema"] <> "a"){
+  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+}
+?>
 <title>Enviar msg</title>
 </head>
 <body>
- <div style="width: 1400px;" id = "logo">
- <h1 id="itu" >------  Arquivo acadêmico - PROEG  --------</h1>
- </div>
-<form method="POST" action="solicitacao.php">
+  <div id="logoufam" >
+  <label for="chec">
+  <img width="100px" height="90px" src="ufam.png"/>
+  </label>
+  <label id="insti">Universidade Federal do Amazonas<br>
+  Pró-Reitoria de Ensino de Graduação<br>
+  Departamento de Registro Acadêmico<br>
+  Arquivo Acadêmico<br>
+  </label>
+  </div>
+  <div>
+  <input type="checkbox" id="chec">
+  <nav id="nave" >
+        <ul>
+          <li><a href="pg_ini1.php">Inicio</a></li>
+        <li><a href="pg_pesquisa.php">Pesquisa por matrícula</a></li>
+        <li><a href="pg_pesquisa_nome.php">Pesquisa por nome</a></li>
+        <li><a href='sair.php'>Sair</a></li>
+      </ul>
+    </nav>
+  </div>
+<form method="POST" id="formsolicita" action="solicitacao.php">
 <label>Solicitante:<label>
-<input type="text" name="soli" value="<?php echo $_SESSION['usuarioname']; ?>" readonly><br><br>
-<label>Setor:<label>
+<input type="text" name="soli" value="<?php echo $_SESSION['usuarioname']; ?>" readonly>&emsp;&emsp;&emsp;
+<label >Setor: <label >
 <input type="text" name="setor" value="<?php echo $_SESSION['setor']; ?>" readonly><br><br>
-<label>Alunos solicitado:<label>
-<input type="text" name="solicitacao" value="<?php echo $codcur; ?>" readonly><br><br>
+<label>Aluno solicitado:<label>
+<input type="text" name="solicitacao" value="<?php echo $codcur; ?>" readonly>&emsp;&emsp;&emsp;
 <label>Observação:<label>
 <input name="obv" type="text"><br><br>
 <input type="submit" value="Enviar">
+</form><br><br>
+<form action="pg_res_pes_mat.php">
+<input type="submit" value="Voltar">
 </form>
 </body>
 </html>

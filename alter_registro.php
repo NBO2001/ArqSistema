@@ -80,6 +80,7 @@ $vl ="UPDATE Alunos SET Nome_civil = '$a1', Nome_social = '$a2', Fev = '$a3', Ae
 $rvl = mysqli_query($conn, $vl);
 
 $_SESSION['ifon']="<script>alert('Alterado com sucesso')</script>";
+$_SESSION['ref'] = "<script>window.location.reload();</script>";
 header("Location:pg_res_pes_mat.php");
 }
 ?>

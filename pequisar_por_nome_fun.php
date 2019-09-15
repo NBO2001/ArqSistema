@@ -2,8 +2,22 @@
 include_once 'ConAL.php';
 
 
-echo "<script>window.open('gera_pdf.php','_blank');</script>";
 
+
+
+
+
+
+
+
+
+        
+
+
+
+/*
+echo "<script>window.open('gera_pdf.php','_blank');</script>";
+*/
 
 
 

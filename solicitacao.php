@@ -14,10 +14,10 @@ if($soli <> ""){
 
   $sql = "INSERT INTO mensa (soli,setor,solicitacao,obv,destino,sts,a_nome,msg_d,vr) VALUES ('$soli','$setor','$solicitacao','$obv','$destino','1','','','2')";
   $rs = mysqli_query($conn,$sql);
-  header("Location:pg_pesquisa.php");
+  header("Location:pg_ini1.php");
   $_SESSION['ifon']="<script>alert('Mensagen enviada com sucesso')</script>";
 }else{
-  header("Location:pg_pesquisa.php");
+  header("Location:pg_ini1.php");
   $_SESSION['ifon']="<script>alert('falha ao tentar')</script>";
 
 }

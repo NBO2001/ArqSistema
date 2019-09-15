@@ -14,9 +14,18 @@ $resultado_usuario = mysqli_query($conn, $result_usuario);
 <html lang=pt-br>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
-
-<title>Usuarios</title>
+<link rel="stylesheet" type="text/css" href="css/es.css">
+<?php
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}
+if($_COOKIE["tema"] <> "a"){
+  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+}
+?>
+<title>Caixa de entrada</title>
 <?php
   if(isset($_SESSION['ifon'])){
     echo $_SESSION['ifon'];
@@ -26,18 +35,39 @@ $resultado_usuario = mysqli_query($conn, $result_usuario);
 ?>
 </head>
 <body>
-  <div style="width: 1400px;" id = "logo">
-  <h1 id="itu" >------  Arquivo acadêmico - PROEG  --------</h1>
-</div>
+  <div id="logoufam" >
+  <label for="chec">
+  <img width="100px" height="90px" src="ufam.png"/>
+</label>
+  <label id="insti">Universidade Federal do Amazonas<br>
+  Pró-Reitoria de Ensino de Graduação<br>
+  Departamento de Registro Acadêmico<br>
+  Arquivo Acadêmico<br>
+  </label>
+  </div>
 <div>
+  <input type="checkbox" id="chec">
+  <nav id="nave" >
+    		<ul>
+          <li><a href="pg_ini1.php">Inicio</a></li>
+    		<li><a href="pg_pesquisa.php">Pesquisa por matrícula</a></li>
+        <li><a href="pg_pesquisa_nome.php">Pesquisa por nome</a></li>
+        <li><a href='sair.php'>Sair</a></li>
+    		</ul>
+    </nav>
+  </div>
+<div id="mesga">
 <?php while($row_usuario = mysqli_fetch_array($resultado_usuario)){
 $a_id= $row_usuario['id'];
 $a_nome= $row_usuario['a_nome'];
-$solicitacao= $row_usuario['solicitacao'];
+$solicitacao = $row_usuario['solicitacao'];
+$solicitacao = explode('.',$solicitacao);
+$idd = $solicitacao[1];
+
+$solicitacao = $solicitacao[0];
 $msg_d= $row_usuario['msg_d'];
-echo "<p style='font-size:20px;color:white;border: 1px solid black;'>De: $a_nome <br>A respeito da solicitação: $solicitacao <br>$msg_d</p>";
-$visum = "UPDATE mensa SET vr = 0 WHERE mensa.id =".$a_id;
-$revisu = mysqli_query($conn, $visum);
+$kval = $idd.'-'.$a_id;
+echo "<a href='redir_mesn.php?texto=$kval' > <p >De: $a_nome <br>A respeito da solicitação: $solicitacao <-- aqui para abrir<br>Resposta: $msg_d</p></a>";
 
 }
 $fun = "window.location.href='pg_ini1.php'";

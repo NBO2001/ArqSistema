@@ -27,7 +27,10 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 }else if(isset($_SESSION['retorno'])){
     $nume_dupli = $_SESSION['retorno'];
     unset ($_SESSION['retorno']);
-
+     if (isset($_SESSION['ref'])){
+       echo $_SESSION['ref'];
+       unset ($_SESSION['ref']);
+     }
     $result_usuario = "SELECT * FROM Alunos WHERE id LIKE '$nume_dupli'";
     $resultado_usuario = mysqli_query($conn, $result_usuario);
     $row_usuario = mysqli_fetch_array($resultado_usuario);
@@ -70,20 +73,34 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 <html lang=pt-br>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" type="text/css" href="css/es.css">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-
 <?php
-
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}
+if($_COOKIE["tema"] <> "a"){
+  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+}
 ?>
 <title>Inserir</title>
 </head>
 <body>
-  <div style="width: 1400px;" id = "logo">
-  <h1 id="itu" >------  Arquivo acadêmico - PROEG  --------</h1>
+  <div id="logoufam" >
+  <label for="chec">
+  <img width="100px" height="90px" src="ufam.png"/>
+</label>
+  <label id="insti">Universidade Federal do Amazonas<br>
+  Pró-Reitoria de Ensino de Graduação<br>
+  Departamento de Registro Acadêmico<br>
+  Arquivo Acadêmico<br>
+  </label>
   </div>
-  <body>
-    <nav>
+<div>
+  <input type="checkbox" id="chec">
+  <nav id="nave" >
     		<ul>
           <li><a href="pg_ini1.php">Inicio</a></li>
     		<li><a href="pg_pesquisa.php">Pesquisa por matrícula</a></li>
@@ -92,54 +109,57 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
 
     		<?php
         if($_SESSION['msg']==1){
+          echo "<li><a href='soli_pas.php'>Solicitar pasta</a></li>";
+          echo "<li><a href='mensa_visu.php'>Mensagem</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";
        }else if($_SESSION['msg']==2){
          if($row_usuario['STS'] == 1){
-           echo "<li><a href='devolucao.php'>Emprestimo/Devolução</a></li>";
+           echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
            echo "<li><a href='sair.php'>Sair</a></li>";
          }else{
-         echo "<li><a href='empr.php'>Emprestimo/Devolução</a></li>";
+           echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";
        }}else if($_SESSION['msg']== 3 or 4){
          if($row_usuario['STS'] == 1){
-           echo "<li><a href='devolucao.php'>Emprestimo/Devolução</a></li>";
            echo "<li><a href='enviar.php'>Inserir documento</a></li>";
            echo "<li><a href='alter_registro.php'>Altera registro</a></li>";
+           echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
            echo "<li><a href='sair.php'>Sair</a></li>";
          }else{
-         echo "<li><a href='empr.php'>Emprestimo/Devolução</a></li>";
+
          echo "<li><a href='enviar.php'>Inserir documento</a></li>";
          echo "<li><a href='alter_registro.php'>Altera registro</a></li>";
+         echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";}
        }
        ?>
 
     		</ul>
     </nav>
+  </div>
 <!-- Responsavel pela pesquisa-->
-<div id="hu" >
-<h1 id="tituhu">Informações do aluno:</h1>
-<label style="color:#FE642E;" class="infaluno">Nome civil: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Nome_civil'];?></label><br>
-<label style="color:#FE642E;" class="infaluno">Nome social: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Nome_social']; ?></label><br>
-<label style="color:#FE642E;" class="infaluno">Matrícula: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Num_mat']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-<label style="color:#FE642E;" class="infaluno">Curso: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Cod_cur']; ?> -- &nbsp </label>
-<label class="infaluno"><?php echo $row_usuario['Nome_cur']; ?></label><br>
-<label style="color:#FE642E;" class="infaluno">Forma de ingresso: &nbsp</label>
-<label  class="infaluno"><?php echo $row_usuario['Fin']; ?> &nbsp&nbsp | &nbsp</label>
-<label style="color:#FE642E;" class="infaluno">Ano de ingresso: &nbsp</label>
-<label  class="infaluno"><?php echo $row_usuario['Ain']; $_SESSION['id']=$row_usuario['id']; ?></label><br>
+<div id="dadosal" >
+<label style="color:#FE642E;" >Nome civil: &nbsp</label>
+<label><?php echo $row_usuario['Nome_civil'];?></label><br>
+<label style="color:#FE642E;" >Nome social: &nbsp</label>
+<label><?php echo $row_usuario['Nome_social']; ?></label><br>
+<label style="color:#FE642E;" >Matrícula: &nbsp</label>
+<label><?php echo $row_usuario['Num_mat']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+<label style="color:#FE642E;">Curso: &nbsp</label>
+<label><?php echo $row_usuario['Cod_cur']; ?> -- &nbsp </label>
+<label><?php echo $row_usuario['Nome_cur']; ?></label><br>
+<label style="color:#FE642E;">Forma de ingresso: &nbsp</label>
+<label ><?php echo $row_usuario['Fin']; ?> &nbsp&nbsp | &nbsp</label>
+<label style="color:#FE642E;">Ano de ingresso: &nbsp</label>
+<label ><?php echo $row_usuario['Ain']; $_SESSION['id']=$row_usuario['id']; ?></label><br>
 
-<label style="color:#FE642E;" class="infaluno">Forma de evasão: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['Fev']; ?>&nbsp&nbsp | &nbsp</label>
-<label style="color:#FE642E;" class="infaluno">Ano de evsão: &nbsp</label>
-<label class="infaluno"><?php if($row_usuario['Aev']==""){echo "Sem evasão";}else{ echo $row_usuario['Aev'];} ?>&nbsp&nbsp | &nbsp</label>
-<label style="color:#FE642E;" class="infaluno">Dados retirados do: &nbsp</label>
-<label class="infaluno"><?php echo $row_usuario['sistema']; ?></label><br>
-<label class="infaluno"><?php
+<label style="color:#FE642E;">Forma de evasão: &nbsp</label>
+<label><?php echo $row_usuario['Fev']; ?>&nbsp&nbsp | &nbsp</label>
+<label style="color:#FE642E;" >Ano de evsão: &nbsp</label>
+<label><?php if($row_usuario['Aev']==""){echo "Sem evasão";}else{ echo $row_usuario['Aev'];} ?>&nbsp&nbsp | &nbsp</label>
+<label style="color:#FE642E;">Dados retirados do: &nbsp</label>
+<label><?php echo $row_usuario['sistema']; ?></label><br>
+<label><?php
 if($row_usuario['STS'] == 1){
   echo "<span style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVISO:A pasta não está no arquivo</span>";
 }else{
@@ -148,11 +168,8 @@ echo ""; }?></label>
 $cod = $row_usuario['Cod_cur']." - ".$row_usuario['Num_mat'];
 $_SESSION['lesa'] = $cod;
 if($_SESSION['msg']==1){
-  $cod = $row_usuario['Cod_cur']." - ".$row_usuario['Num_mat'];
-echo "<form method='POST' action='soli_pas.php'>
-<input type='text' style='display:none;' name='Num_mat' value='$cod' readonly>
-<input  name='sand' style='position:absolute;left:700px;top:20px;' type='submit' value='Solicitar pasta'>
-</form>";
+  $cod = $row_usuario['Cod_cur']." - ".$row_usuario['Num_mat'].".".$row_usuario['id'];
+  $_SESSION['Num_mat'] = $cod;
 }
 ?>
 
@@ -167,14 +184,14 @@ echo "<form method='POST' action='soli_pas.php'>
 if($_SESSION['msg']==4){
 echo "<form method='POST'>
   <input style='display:none;' id='bva' type='text' name='bvaa'>
-  <input style='position:absolute;top:450px;left:300px;' name='valoralter' type='submit' value='Alterar'>
+  <input id='btnalterdoc' name='valoralter' type='submit' value='Alterar documento'>
 </form>";
 }
 ?>
 </div>
-<div id="tab">
-<table id='minhaTabela'>
-   <thead>
+<div  id="tab" class="tabelapgmat">
+<table  id='minhaTabela' class="tabfom">
+   <thead class="cabecalj">
         <tr>
              <th>ID</th>
              <th>Classificação do <br> documento</th>
@@ -300,24 +317,33 @@ if($valor_pesquisa<>""){
     $va1 = 'selected';
     $va2 = "";
     $va3 = "";
+    $va4 = "";
   }else if($linhaa['class_doc']=="REQUERIMENTO"){
     $va1 = "";
     $va2 = 'selected';
     $va3 = "";
+    $va4 = "";
   }else if($linhaa['class_doc']=="PROCESSO"){
     $va1 = "";
     $va2 = "";
     $va3 = 'selected';
+    $va4 = "";
+  }else if($linhaa['class_doc']=="HISTóRICO ESCOLAR"){
+    $va1 = "";
+    $va2 = "";
+    $va3 = '';
+    $va4 = "selected";
   }else{
     $va1 = "";
     $va2 = "";
     $va3 = "";
+    $va4 = "";
   }
   $clasfi = $linhaa['tipo_doc'];
   $decricao= $linhaa['nome'];
   $anodic= $linhaa['ano_doc'];
 
-  echo "<div style='position: absolute;left:30%;top:20%; height:500px;width:800px;background-color:white;'>
+  echo "<div id='alter-doc'>
     <form method='POST'  action='alterar_documento.php'>
     <input type='text' name='idrecurera' style='display:none;' value='$valor_pesquisa' readonly>
       <label>Classificação do documento:&nbsp;</label>
@@ -328,15 +354,16 @@ if($valor_pesquisa<>""){
         <option $va3>Processo</option>
         <option $va2>Requerimento</option>
         <option $va1>TCE</option>
+        <option $va4>Histórico Escolar</option>
       </select><br><br>
       <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
       <input type='text' name='descricao' value='$decricao' placeholder='Descreva a modificação'><br><br>
       <label>Ano do documento:&nbsp;</label>
       <input id='ano' name='ano' value='$anodic' type='number' min='1900' max='$par[0]' required>
-      <input type='submit' id='vol' value='Salvar'>
+      <input  type='submit' id='vol' value='Salvar'>
     </form>
     <form method='POST' >
-    <input type='submit' value='voltar' >
+    <input id='btnvoltaralte' type='submit' value='voltar' >
     </form>
 
   </div>";

@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

@@ -61,13 +61,31 @@ if($tema <> ""){
   		</ul>
   </nav>
 </div>
-<div class="pesq" id="Tpesq">
-<form id="pesq_mt" method="Post" action="pg_res_pes_mat.php" enctype="multipart/form-datan">
-  <label class="a1" >Número de matrícula:</label><br><br>
-	<input class="inputbtn" id="digta_valor" minlength="8" maxlength="9" type="text" name ="nume" placeholder="Digite a matrícula" required><br><br><br>
-	<input id="pesquisa" class="inputbtn"  name="pesqui" type="submit" value="Pesquisar"><br>
+<div id="formaltertema">
+<form method="post">
+<select name="tem">
+  <option>Padrão</option>
+  <option>Gi19</option>
+</select>
+<input type="submit" value="Alterar">
 </form>
 </div>
 </body>
 
 </html>
+<?php
+$temina = filter_input(INPUT_POST,'tem',FILTER_SANITIZE_STRING);
+
+if($temina<>""){
+  if($temina=="Padrão"){
+    setcookie("tema","a", (time() + (500 * 24 * 3600)));
+    header("Location:pg_ini1.php");
+
+  }else{
+    setcookie("tema","$temina", (time() + (500 * 24 * 3600)));
+    header("Location:pg_ini1.php");
+  }
+}
+
+
+?>

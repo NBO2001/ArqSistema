@@ -40,7 +40,7 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
 <html lang=pt-br>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<link rel="stylesheet" type="text/css" href="css/es.css">
 
 <title>Inserir</title>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -48,7 +48,19 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
 <body>
 
   <body>
-    <nav>
+    <div id="logoufam" >
+    <label for="chec">
+    <img width="100px" height="90px" src="ufam.png"/>
+  </label>
+    <label id="insti">Universidade Federal do Amazonas<br>
+    Pró-Reitoria de Ensino de Graduação<br>
+    Departamento de Registro Acadêmico<br>
+    Arquivo Acadêmico<br>
+    </label>
+    </div>
+  <div>
+    <input type="checkbox" id="chec">
+    <nav id="nave" >
     		<ul>
         <li><a href="pg_ini1.php">Inicio</a></li>
     		<li><a href="pg_pesquisa.php">Pesquisa por matrícula</a></li>
@@ -57,40 +69,50 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
     		</ul>
     </nav>
 <!-- Responsavel pela pesquisa-->
-<div id="hu">
-  <h1 id="tituhu">Informações do aluno:</h1>
-  <label class="infaluno">Nome: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Nome_civil']; ?></label><br>
-  <label class="infaluno">Matrícula: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Num_mat']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-  <label class="infaluno">Curso: &nbsp</label>
-  <label class="infaluno"><?php echo $row_usuario['Cod_cur']; ?> -- &nbsp </label>
-  <label class="infaluno"><?php echo $row_usuario['Nome_cur']; ?></label><br>
+<div id="dadosal">
+  <label style="color:#FE642E;" >Nome civil: &nbsp</label>
+  <label><?php echo $row_usuario['Nome_civil'];?></label><br>
+  <label style="color:#FE642E;" >Nome social: &nbsp</label>
+  <label><?php echo $row_usuario['Nome_social']; ?></label><br>
+  <label style="color:#FE642E;" >Matrícula: &nbsp</label>
+  <label><?php echo $row_usuario['Num_mat']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+  <label style="color:#FE642E;">Curso: &nbsp</label>
+  <label><?php echo $row_usuario['Cod_cur']; ?> -- &nbsp </label>
+  <label><?php echo $row_usuario['Nome_cur']; ?></label><br>
 </div>
 
 <div id="fo">
 
-<form method="Post" action="envia_banco.php"  enctype="multipart/form-data">
-  <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  <input type="text" name="nome" placeholder="Descreva a modificação"><br><br>
+<form method="Post" action="envia_banco.php" id="formenvia" enctype="multipart/form-data">
   <label>Selecione o arquivo:</label>
   <input id="arq" type="file" name="pdf" required><br><br>
-  <label>Tipo de documento</label>
+
+  <label>Tipo de documento:</label>
   <select name="sele">
     <option>Ficha Cadastral</option>
     <option>Processo</option>
     <option>Requerimento</option>
     <option>TCE</option>
+    <option>Histórico Escolar</option>
   </select><br><br>
-<label>Classificação do documento:&nbsp;</label>
-<input type="text" name="assunto" id="assunto" placeholder="Pesquisar tipo de documento" required><br><br>
+
+  <label>Classificação do documento:&nbsp;</label>
+  <input  type="text" name="assunto" id="assunto" placeholder="Pesquisar tipo de documento" required><br><br>
+
+
+  <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <input type="text" name="nome" placeholder="Descreva a modificação"><br><br>
+
+
 <label>Ano do documento:&nbsp;</label>
 <input id="ano" name="ano" value="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>" type="number" min="1900" max="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>" required>
 
 <input id= "san" name="sand" type="submit" value="Cadastrar">
 
 </form>
-
+<form action="pg_res_pes_mat.php">
+<input id= "sanval" name="sand" type="submit" value="Voltar">
+</form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

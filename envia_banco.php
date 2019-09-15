@@ -20,6 +20,7 @@ include_once 'ConAL.php';
   $resultado_usuario = mysqli_query($conn, $result_usuario);
   $row_usuario = mysqli_fetch_array($resultado_usuario);
 
+
   date_default_timezone_set('America/Sao_Paulo');
   $dataLocal = date('d-m-Y', time());
   $dataL = date('Y-m-d', time());
@@ -29,16 +30,30 @@ include_once 'ConAL.php';
   $horari = $horari = $dataLocal." -- ".$horari.":".$data[1].":".$data[2];
   $usuarioname = $_SESSION['usuarioname'];
   $nun = $_SESSION['id'];
+if ($tipo_docu =="FICHA CADASTRAL" ){
+$coman = "SELECT * FROM Ko WHERE imagem LIKE '$nun' AND class_doc LIKE 'FICHA CADASTRAL'";
+$ver = mysqli_query($conn,$coman);
+$verificador = mysqli_fetch_array($ver);
+$dois = $verificador['id'];
+}
+
 if ($nun==""){
  header("Location:Pesquisa.php");
  $_SESSION['ifon']="<script>alert('Campo vazio!!')</script>";
 
 }else if($row_usuario['id'] == ""){
-header("Location:Pesquisa.php");
+header("Location:pg_res_pes_mat.php");
 $_SESSION['ifon']="<script>alert('Tipo do documento invalido!!')</script>";
+$_SESSION['ref'] = "<script>window.location.reload();</script>";
 }else if($nome_arq[1] <> "pdf"){
-  header("Location:Pesquisa.php");
+  header("Location:pg_res_pes_mat.php");
   $_SESSION['ifon'] = "<script>alert('Arquivo não suportado!!')</script>";
+  $_SESSION['ref'] = "<script>window.location.reload();</script>";
+}else if($verificador['id']<>""){
+    header("Location:pg_res_pes_mat.php");
+    $_SESSION['ifon']="<script>alert('O Aluno já tem ficha cadastral!!')</script>";
+    $_SESSION['ref'] = "<script>window.location.reload();</script>";
+
 }else {
   $tipo_doc = $row_usuario['cod']." -- ".$row_usuario['nome_doc'];
   $fase_con =$row_usuario['fase_con'];
@@ -81,11 +96,11 @@ $_SESSION['ifon']="<script>alert('Tipo do documento invalido!!')</script>";
   $dire = "/home/arquivo/Área de Trabalho/In/pdf/".$nun."/";
   mkdir($dire);
   chmod ($dire,0777);
-  move_uploaded_file($_FILES['pdf']['tmp_name'],$dire.$tipo_doc." -- ".$horari.".pdf");
+  move_uploaded_file($_FILES['pdf']['tmp_name'],$dire.$tipo_docu." -- ".$horari.".pdf");
 $fp = fopen("test.sh","a+");
   $fop = "test.sh";
   chmod ($fop,0777);
-$nome_pdf = $tipo_doc." -- ".$horari.".pdf";
+$nome_pdf = $tipo_docu." -- ".$horari.".pdf";
 $can = "/In/pdf/".$nun."/".$nome_pdf;
 $tes = "
   git add pdf/".$nun."/
@@ -100,6 +115,7 @@ $tes = "
 
   header("Location:pg_res_pes_mat.php");
   $_SESSION['retorno'] = $_SESSION['id'];
+
   unset ($_SESSION['id']);
   $_SESSION['ifon'] = "<script>alert('Salvo com sucesso!!')</script>";
 }

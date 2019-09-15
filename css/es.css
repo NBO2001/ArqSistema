@@ -4,9 +4,9 @@
 	margin: 0px;
 }
 body{
-background-color:	#0A2A29;
+background-color:	#B0C4DE;
 }
-a{
+li a{
 	text-decoration:none;
 	color: white;
 
@@ -20,9 +20,11 @@ nav{
 	z-index:1;
 	position:absolute;
 	background-color: rgba(16,16,16,.5);
+	top:100px;
 	width:250px;
 	height:100%;
 	left: -250px;
+	transition: all .5s;
 
 }
 #chec:checked ~ #nave
@@ -56,6 +58,71 @@ color: black;
 #itu{
   font-size:40px;
 	text-align: center;
+}
+#stymensare{
+overflow: auto;
+height: 200px;
+border:solid 1px;
+position:absolute;
+width:100%;
+left:0px;
+top:110px;
+
+}
+#btnmensavisu{
+text-align: center;
+background-color: red;
+position: absolute;
+
+	width:80%;
+
+	left:0px;
+	top:330px;
+}
+#btnmensavisu input{
+
+	height: 60px;
+	width:300px;
+	font-size: 25px;
+border: 1px solid black;
+border-radius: 25px;
+
+}
+#msgevia{
+	background-color: #87CEFA;
+	position: absolute;
+	left: 10%;
+	width:70%;
+	height: 200px;
+	border: 1px solid black;
+	border-radius: 15px;
+	top:400px;
+}
+#msgevia input{
+	font-size: 25px;
+	width:400px;
+	height: 60px;
+	border: 1px solid black;
+	border-radius: 15px;
+
+}
+#msgevia input[type=submit]{
+	font-size: 25px;
+	width:100%;
+
+
+}
+#btn111{
+	position: absolute;
+	left: 20px;
+}
+#btn112{
+	position: absolute;
+	left: 400px;
+}
+#btn113{
+	position: absolute;
+	left: 800px;
 }
 #formalter{
   position: absolute;
@@ -98,6 +165,304 @@ color: black;
   border: 1px solid black;
 
 }
+#pesq_mt{
+	font-size: 25px;
+}
+#pesq_fom{
+	font-size: 25px;
+}
+#tabn{
+	position: absolute;
+	overflow: auto;
+	width: 100%;
+	height: 300px;
+	border:solid 1px;
+}
+#bv{
+	display: none;
+}
+#sana{
+		position: absolute;
+		top:430px;
+		left: 30%;
+		width: 500px;
+		height: 60px;
+		font-size: 30px;
+		border: 1px solid black;
+		border-radius:25px;
+
+}
+#minhaTabela{
+	width: 100%;
+  margin:0 auto;
+  border:0;
+	top:25px;
+  box-shadow: 0 5px 30px darkgrey;
+  border-spacing: 0;
+}
+
+#minhaTabela thead th{
+  font-weight: bold;
+  background-color: black;
+  color:white;
+
+  padding:5px 10px;
+}
+#minhaTabela tr{
+	font-size: 20px;
+}
+#minhaTabela tr td{
+	font-size: 20px;
+  padding:5px 10px;
+  text-align: center;
+
+  cursor: pointer; /**importante para não mostrar cursor de texto**/
+}
+
+#minhaTabela tr td:last-child{
+  text-align: right;
+}
+
+/**Cores**/
+#minhaTabela tr:nth-child(odd){
+  background-color: #eee;
+}
+
+/**Cor quando passar por cima**/
+#minhaTabela tr:hover td{
+  background-color: #feffb7;
+}
+
+/**Cor quando selecionado**/
+#minhaTabela tr.selecionado td{
+  background-color: #aff7ff;
+}
+#dadosal{
+	position: absolute;
+	left:5%;
+	font-size: 20px;
+	padding: 20px 5px;
+	margin: 5px;
+	width: 90%;
+	border: 1px solid black;
+	border-radius: 15px;
+}
+
+.tabelapgmat{
+position: absolute;
+
+top:295px;
+left:5%;
+width: 90%;
+height: 300px;
+border: 1px solid black;
+border-radius: 15px;
+
+}
+#tab{
+overflow: auto;
+}
+#san{
+position: absolute;
+top:500px;
+left: 5%;
+height: 60px;
+width: 400px;
+font-size: 30px;
+border:1px solid black;
+border-radius: 20px;
+}
+#btnalterdoc{
+	position:absolute;
+	top:500px;
+	left:50%;
+	height: 60px;
+	width: 400px;
+	font-size: 30px;
+	border:1px solid black;
+	border-radius: 20px;
+}
+#formaltertema{
+	position: absolute;
+	top:150px;
+	left: 20%;
+font-size: 50px;
+
+}
+#formaltertema select{
+	height: 60px;
+	width:300px;
+	font-size: 25px;
+	border:1px solid black;
+	border-radius: 25px;
+}
+#formaltertema input{
+	height: 60px;
+	width:300px;
+	font-size: 25px;
+	border:1px solid black;
+	border-radius: 25px;
+}
+#fo{
+	position: absolute;
+	text-align: left;
+	width:92%;
+	top:230px;
+	height: 410px;
+	left:5%;
+	border:1px solid black;
+	border-radius: 25px;
+}
+#formmultup{
+	text-align: center;
+	margin: 15px;
+	width:92%;
+	border:1px solid black;
+	border-radius: 25px;
+	height: 60px;
+}
+#resuupmul{
+	position: absolute;
+	left: 3%;
+	overflow: auto;
+	height: 400px;
+	width:90%;
+	border:1px solid black;
+	border-radius: 25px;
+}
+#resuupmul a{
+	text-decoration:none;
+
+}
+#resuupmul p{
+	color: white;
+	border:1px solid black;
+	border-radius: 25px;
+	font-size: 25px;
+	padding: 20px 5px;
+}
+#resuupmul p:hover{
+	background-color: white;
+	color: black;
+}
+
+#formmultup input{
+	width:400px;
+	border:1px solid black;
+	border-radius: 25px;
+	margin: 10px;
+	font-size: 25px;
+}
+#formenvia{
+	margin: 5px;
+	font-size: 25px;
+	position: absolute;
+	left: 20%;
+}
+#formenvia input{
+	width:300px;
+	height:30px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 25px;
+	padding: 5px 5px;
+
+}
+#formenvia select{
+	width:300px;
+	height:40px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 25px;
+	padding: 5px 5px;
+
+}
+#formenvia{
+	top:350px;
+	height: 50px;
+	width:500px;
+}
+#sanval{
+	position: absolute;
+	left:23%;
+	top:420px;
+	height: 50px;
+	width:500px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 25px;
+	padding: 5px 5px;
+	font-size: 25px;
+}
+#alter-doc{
+position: absolute;
+left:20%;
+top:20%;
+height:500px;
+width:800px;
+background-color:#EEEED1;
+margin: 5px;
+text-align: left;
+border: 1px solid black;
+border-radius: 25px;
+padding: 5px 5px;
+}
+#alter-doc label{
+	font-size: 25px;
+}
+#alter-doc input{
+	font-size: 25px;
+	height:50px;
+	width:50%;
+	border: 1px solid black;
+	border-radius: 25px;
+	padding: 5px 5px;
+}
+#alter-doc select{
+	font-size: 25px;
+	height:50px;
+	width:50%;
+	border: 1px solid black;
+	border-radius: 25px;
+	padding: 5px 5px;
+}
+#btnvoltaralte{
+	position: absolute;
+	left: 20%;
+	top:400px;
+}
+#vol{
+	position: absolute;
+	left: 20%;
+	top:340px;
+
+}
+#mesga a{
+	text-decoration:none;
+	color: black;
+
+}
+#mesga a:hover{
+	color: white;
+
+
+}
+#mesga p{
+
+	font-size:25px;
+	color:black;
+	border: 1px solid black;
+  margin: 10px;
+	width: 80%;
+
+}
+
+#mesga p:hover{
+	background-color: #00BFFF;
+
+
+
+}
 @media (max-width: 1000px) {
 
 #login{
@@ -115,6 +480,11 @@ color: black;
   border: 1px solid black;
   border-radius: 15px;
 }
+#minhaTabela tr td{
+	font-size: 40px;
+  padding:2px 3px;
+  text-align:center;
+}
 #btnlogin{
   position: absolute;
   top:55%;
@@ -124,6 +494,23 @@ color: black;
   font-size: 50px;
 
 }
+#tabn{
+	position: absolute;
+	overflow: auto;
+	width: 100%;
+	height: 800px;
+	border:solid 1px;
+}
+#sana{
+		position: absolute;
+		top:950px;
+		width: 100%;
+		height: 120px;
+		font-size: 100px;
+	left: 0px;
+
+}
+
 #copra{
   position: absolute;
    top:90%;
@@ -160,8 +547,18 @@ background-color: inherit;
 color: red;
 }
 #logoufam{
-height:100%;
+height:100px;
+width:100%;
 background-color: #708090;
+color:white;
+}
+#logoufam img{
+border:1px solid black;
+	border-radius: 25px;
+}
+
+#logoufam label{
+margin: 5px;
 }
 #insti{
 	position: absolute;
@@ -189,13 +586,100 @@ display: none;
 #tela_inicial_tes{
 	position:absolute;
 	top:120px;
-	left: 25%;
+
+	left: 28%;
 	height:500px;
 	width:600px;
 }
+#Tpesq{
+	height:300px;
+	width:600px;
+	position: absolute;
+	border: 1px solid black;
+	border-radius: 15px;
+	text-align: center;
+	top:110px;
+	left:20%;
+}
+.a1{
+	color:black;
+}
+.inputbtn{
+	font-size: 30px;
+	color:black;
+	border: 1px solid black;
+	border-radius: 15px;
+	width: 550px;
+}
+#formsolicita{
+	position: absolute;
+	left: 5%;
+	font-size: 25px;
+	border: 1px solid black;
+	border-radius: 15px;
+	width: 90%;
+	height:400px;
+}
+#formsolicita input{
+	width:350px;
+	height: 50px;
+	font-size: 25px;
+	border: 1px solid black;
+	padding: 5px 5px;
+	border-radius: 25px;
+}
+#formsolicita input[type=submit]{
+width:100%;
+}
+
+
 @media (max-width: 1000px) {
-	#sty{
-		color:red;
+
+	#tela_inicial_tes{
+		left: 5%;
+	}
+#pesq_mt{
+	font-size: 50px;
+}
+.a1{
+	font-size: 90px;
+}
+.inputbtn{
+	height: 200px;
+	width: 95%;
+	font-size: 100px;
+}
+	#Tpesq{
+
+	height: 800px;
+	width: 100%;
+	left:0%;
+
+	}
+	nav{
+		z-index:1;
+		position:absolute;
+		background-color: rgba(16,16,16,.5);
+		width:100%;
+		height:100%;
+		left: -100%;
+		transition: all .5s;
+
+	}
+	#chec:checked ~ #nave
+	{
+	transform: translateX(100%);
+	}
+	#nave{
+		text-align: center;
+		font-size: 100px;
+	}
+	li{
+		border: 1px solid white;
+		padding: 20px 5px;
+	}
+	.a1{
+		width: 100%;
 	}
 
   .bntv1{
