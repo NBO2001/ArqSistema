@@ -3,15 +3,23 @@ include_once 'ConAL.php';
 
 
 
+$sql = "CREATE TABLE chat (
+  id int(220) NOT NULL,
+  uso varchar(220) DEFAULT NULL,
+  msg varchar(220) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  ALTER TABLE chat
+  ADD PRIMARY KEY (id);
+  ALTER TABLE `chat` CHANGE `id` `id` INT(220) NOT NULL AUTO_INCREMENT;
+  TRUNCATE chat";
+
+$rexea = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 
 
 
 
 
-
-
-        
 
 
 

@@ -18,14 +18,7 @@ if(isset($_COOKIE["tema"])){
 
   }
 ?>
-<style>
 
-@media (max-width: 1000px) {
-
-
-}
-
-</style>
 </head>
 <body class="pes_nome_body">
 

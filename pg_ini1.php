@@ -21,17 +21,32 @@ include_once 'ConAL.php';
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf=8">
-<meta http-equiv="refresh" content="30">
-<title>Tela inicial</title>
+  <meta charset="utf=8">
+  <meta http-equiv="refresh" content="120">
+  <title>Tela inicial</title>
 
-<link rel="stylesheet" type="text/css" href="css/es.css">
-<?php
-if($_COOKIE["tema"] <> "a"){
-  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
-}
+  <link rel="stylesheet" type="text/css" href="css/es.css">
+  <title>Teste</title>
+  <?php
+  if($_COOKIE["tema"] <> "a"){
+    echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+  }
 
-?>
+  ?>
+  <script type="text/javascript">
+ function ajax(){
+   var req = new XMLHttpRequest();
+   req.onreadystatechange = function(){
+     if(req.readyState == 4 && req.status == 200){
+        document.getElementById('chat').innerHTML = req.responseText;
+     }
+   }
+   req.open('GET','chat.php',true);
+   req.send();
+
+ }
+
+  </script>
 </head>
 <body id="pgini1">
 
@@ -72,7 +87,7 @@ Arquivo Acadêmico<br>
 <input type="checkbox" id="chec">
 <nav id="nave" >
     <ul>
-      <li><a href="#">Alterar senha</a></li>
+      <li><a href="alterar_senha.php">Alterar senha</a></li>
     <li><a href="altera_tema.php">Alterar tema</a></li>
     <?php
    if ($_SESSION['msg']==4){
@@ -138,9 +153,23 @@ echo"<form  action='admini.php'>
 }
 }
 ?>
-
+</div>
+<?php
+if($_SESSION['msg']<>1){
+echo "<div  id='chat'>
 
 </div>
+<div>
+  <form id='campo' method='POST' action='envianochat.php'>
+  <input type='text' name='msg' placeholder='Escreva a mensagen' autocomplete='off' required>
+  <input type='submit' value='Enviar'>
+  </form>
+</div>
+<script>
+setInterval(function(){ajax();},500);
+</script>";
+}
+?>
 <label id="copra" style="">&copy;2019 N.B.O<label>
 </body>
 </html>

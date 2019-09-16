@@ -1,80 +1,64 @@
+<?php
+session_start();
+include_once "ConAL.php";
+$vla ="SELECT id FROM log WHERE ursu LIKE 'melry' ";
+$rvla = mysqli_query($conn, $vla) or die( "Ocorreu um erro");
+$idf = mysqli_fetch_array($rvla);
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="utf=8">
 <title>Tela inicial</title>
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+
 <link rel="stylesheet" type="text/css" href="css/es.css">
-<style>
-
-#alterarsenha{
-  position: absolute;
-  background-color: #808080;
-  left:40%;
-  top:20%;
-}
-.labelaterarsenha{
-  position: absolute;
-  width: 100%;
-  height:5%;
-  font-size: 20px;
-  text-align: center;
-
-}
-.campotabelasenn{
-  border-radius: 15px;
-  border: 1px solid black;
-}
-#btnaltersenha{
-  position: absolute;
-  left: 25%;
-  width: 50%;
-  border-radius: 15px;
-  border: 1px solid black;
-}
-#alterarsenha{
-  position: absolute;
-  background-color: #808080;
-  left:40%;
-  top:20%;
-}
-.labelaterarsenha{
-  position: absolute;
-  width: 100%;
-  height:5%;
-  font-size: 20px;
-  text-align: center;
-
-}
-.campotabelasenn{
-  border-radius: 15px;
-  border: 1px solid black;
-}
-#btnaltersenha{
-  position: absolute;
-  left: 25%;
-  width: 50%;
-  border-radius: 15px;
-  border: 1px solid black;
-}
-@media (max-width: 1000px) {
-
-
+<?php
+if($_COOKIE["tema"] <> "a"){
+  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
 }
 
-</style>
+?>
 </head>
 <body>
+  <div id="logoufam" >
+
+  <label for="chec">
+  <img width="100px" height="90px" src="ufam.png"/>
+  </label>
+  <label id="insti">Universidade Federal do Amazonas<br>
+  Pró-Reitoria de Ensino de Graduação<br>
+  Departamento de Registro Acadêmico<br>
+  Arquivo Acadêmico<br>
+  </label>
+  </div>
   <div>
-    <form method="Post" action="" id="alterarsenha" enctype="multipart/form-data">
-      <label class="labelaterarsenha">Login:</label><br>
-        <input class="campotabelasenn" name="nuso" type="text" required></input><br>
-      <label class="labelaterarsenha">Senha antiga:</label><br>
-        <input class="campotabelasenn" name="senuso" type="password" required></input><br><br>
-        <label class="labelaterarsenha">Nova senha:</label><br>
-          <input class="campotabelasenn" name="senuso" type="password" required></input><br><br>
-          <label class="labelaterarsenha">Digite novamente a senha:</label><br>
-            <input class="campotabelasenn" name="senuso" type="password" required></input><br><br>
+  <input type="checkbox" id="chec">
+  <nav id="nave" >
+      <ul>
+        <li><a href="pg_ini1.php">Inicio</a></li>
+      <li><a href="altera_tema.php">Alterar tema</a></li>
+      <?php
+     if ($_SESSION['msg']==4){
+       echo "<li><a href='multup.php'>Adicionar documentos</a></li>";
+     }
+     ?>
+      <li><a href="sair.php">Sair</a></li>
+      </ul>
+  </nav>
+  </div>
+  <div id="altesenha">
+    <form method="POST" >
+      <label >Login:</label><br>
+        <input  name="nuso" type="text" value="<?php echo $_SESSION['usuarioname']; ?>" readonly></input><br>
+        <label >Nova senha:</label><br>
+          <input  name="sensuso" type="text" minlength="3" maxlength="15" required></input><br><br>
+          <label >Digite novamente a senha:</label><br>
+            <input  name="senusov" type="text" minlength="3" maxlength="15" required></input><br><br>
         <input name="btnlo" id="btnaltersenha" type="submit" value="Alterar"></input><br><br><br><br><br><br>
         <label>&copy;2019 N.B.O<label>
     </form>
@@ -82,3 +66,21 @@
   </div>
 </body>
 </html>
+<?php
+$senha1 = filter_input(INPUT_POST, 'sensuso', FILTER_SANITIZE_STRING);
+$senha2 = filter_input(INPUT_POST, 'senusov', FILTER_SANITIZE_STRING);
+if($senha1 == $senha2){
+  if($senha1<>""){
+    $vl ="UPDATE log SET senha='$senha1' WHERE log.id=".$idf['id'];
+    $rvl = mysqli_query($conn, $vl) or die( "Ocorreu um erro");
+    $_SESSION['ifon'] = "<script>alert('Alterado com sucesso!!')</script>";
+    header("Location:pg_ini1.php");
+    $senha1 = "";
+  }
+}else{
+  echo "<script>alert('Senhas não conferem')</script>";
+}
+
+
+
+?>
