@@ -51,7 +51,7 @@ if(!is_dir($dire)){
           $horari = $data[0]-1;
           $horari = $horari = $dataLocal." -- ".$horari.":".$data[1].":".$data[2];
           $usuarioname = $_SESSION['usuarioname'];
-          $dire = "/home/naatan/Área de Trabalho/In/pdf/".$nun."/";
+          $dire = "/home/arquivo/Área de Trabalho/In/pdf/".$nun."/";
           mkdir($dire);
           chmod ($dire,0777);
           if(move_uploaded_file($arquivo['tmp_name'][$controle], $dire.$tipodoc."->".$horari.".pdf")){
