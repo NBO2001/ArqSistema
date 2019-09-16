@@ -56,7 +56,7 @@ if(!is_dir($dire)){
           chmod ($dire,0777);
           if(move_uploaded_file($arquivo['tmp_name'][$controle], $dire.$tipodoc."->".$horari.".pdf")){
             $nome_pdf = $tipodoc."->".$horari.".pdf";
-            $can = "In/pdf/".$nun."/".$nome_pdf;
+            $can = "/In/pdf/".$nun."/".$nome_pdf;
             $result_usuarioife = "SELECT * FROM Ife WHERE cod LIKE '125.43'";
             $resultado_usuarioife = mysqli_query($conn, $result_usuarioife);
             $row_usuarioife = mysqli_fetch_array($resultado_usuarioife);
