@@ -9,7 +9,7 @@ if($query <> ""){
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-  $xml = '<?xml version="1.0" encoding="ISO-8859-1"?>';
+  $xml = '<?xml version="1.0" encoding="utf-8"?>';
 
 
   $xml .= '<natan>';
