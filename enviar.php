@@ -9,6 +9,11 @@ if($_SESSION['msg']== 1 or $_SESSION['msg']== 2 or $_SESSION['msg']== "" ) {
      echo $_SESSION['ifon'];
      unset ($_SESSION['ifon']);
    }
+   if(isset($_COOKIE["tema"])){
+     $tema = $_COOKIE["tema"];
+   }else{
+     setcookie("tema","a", (time() + (500 * 24 * 3600)));
+   }
  ?>
 <?php
 
@@ -41,7 +46,12 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/es.css">
+<?php
+if($_COOKIE["tema"] <> "a"){
+  echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+}
 
+?>
 <title>Inserir</title>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 </head>
@@ -81,13 +91,13 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
   <label><?php echo $row_usuario['Nome_cur']; ?></label><br>
 </div>
 
-<div id="fo">
+<div id="formulario_envia_doc">
 
-<form method="Post" action="envia_banco.php" id="formenvia" enctype="multipart/form-data">
-  <label>Selecione o arquivo:</label>
+<form method="Post" action="envia_banco.php" enctype="multipart/form-data">
+  <label>Selecione o arquivo:</label><br><br>
   <input id="arq" type="file" name="pdf" required><br><br>
 
-  <label>Tipo de documento:</label>
+  <label>Tipo de documento:</label><br><br>
   <select name="sele">
     <option>Ficha Cadastral</option>
     <option>Processo</option>
@@ -96,22 +106,22 @@ $_SESSION['ifon'] = "<script>alert('Nenhum registro localizado!!')</script>";
     <option>Histórico Escolar</option>
   </select><br><br>
 
-  <label>Classificação do documento:&nbsp;</label>
-  <input  type="text" name="assunto" id="assunto" placeholder="Pesquisar tipo de documento" required><br><br>
+  <label>Classificação do documento:&nbsp;</label><br><br>
+  <input  type="text" name="assunto" id="assunto" placeholder="Pesquisar Classificação do documento" required><br><br>
 
 
-  <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <label>Descrição: &nbsp;&nbsp;&nbsp;&nbsp;</label><br><br>
   <input type="text" name="nome" placeholder="Descreva a modificação"><br><br>
 
 
-<label>Ano do documento:&nbsp;</label>
+<label>Ano do documento:&nbsp;</label><br><br>
 <input id="ano" name="ano" value="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>" type="number" min="1900" max="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>" required>
 
-<input id= "san" name="sand" type="submit" value="Cadastrar">
+<br><br><input name="sand" type="submit" value="Cadastrar">
 
 </form>
 <form action="pg_res_pes_mat.php">
-<input id= "sanval" name="sand" type="submit" value="Voltar">
+<input name="sand" type="submit" value="Voltar">
 </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
