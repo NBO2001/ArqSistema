@@ -1,8 +1,22 @@
 <?php
 include_once 'ConAL.php';
+/*try {
+  $pdo = new PDO( 'mysql:host=localhost;dbname=Al', 'root', '' );
+  $pdo -> query("SET NAMES UTF8");
+  $stmt = $pdo->prepare("SELECT * FROM Alunos");
 
+    //Esse código precisa de tratamento pois pode gerar alguma exceção
+    if($stmt->execute(array('id','Cod_cur','Num_mat','Nome_civil','Fin','Fev','Ain','Aev','sistema'))){
 
+    }else{
+    throw new \Exception('Erro ao tentar');
+    }
+} catch (\Exception $e) {
+    var_dump($e->getMessage());
+}
+*/
 
+/*
 $sql = "CREATE TABLE chat (
   id int(220) NOT NULL,
   uso varchar(220) DEFAULT NULL,
@@ -17,7 +31,7 @@ $rexea = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 
 
-
+*/
 
 
 

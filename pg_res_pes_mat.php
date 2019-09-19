@@ -14,7 +14,11 @@ $nun = preg_replace("/\s+/","",$nun);
 $nume_dupli = filter_input(INPUT_POST,'nume_dupli',FILTER_SANITIZE_STRING);
 $nume_dupli = preg_replace("/\s+/","",$nume_dupli);
 
-
+if(isset($_SESSION['nun_pesquia'])){
+  unset ($_SESSION['retorno']);
+  $nun = $_SESSION['nun_pesquia'];
+  unset ($_SESSION['nun_pesquia']);
+}
 if ($nume_dupli <> ""){
 $result_usuario = "SELECT * FROM Alunos WHERE id LIKE '$nume_dupli'";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
@@ -305,6 +309,7 @@ document.getElementById("bva").value = d;
 </script>
 <?php
 $valor_pesquisa = filter_input(INPUT_POST,'bvaa',FILTER_SANITIZE_STRING);
+$_SESSION['apaga_id_doc'] = $valor_pesquisa;
 $_SESSION['retorno'] = $row_usuario['id'];
 if($valor_pesquisa<>""){
   $alterdoc = "SELECT * FROM Ko WHERE id LIKE '".$valor_pesquisa."'";
@@ -362,13 +367,29 @@ if($valor_pesquisa<>""){
       <input id='ano' name='ano' value='$anodic' type='number' min='1900' max='$par[0]' required>
       <input  type='submit' id='vol' value='Salvar'>
     </form>
+    <button onclick='funcao1()'>Apagar documento</button>
     <form method='POST' >
     <input id='btnvoltaralte' type='submit' value='voltar' >
     </form>
 
   </div>";
 }
-
+echo "<script>
+function funcao1()
+{
+var x;
+var r=confirm('Deseja realmente excluí esse documento?' );
+if (r==true)
+  {
+  var x='S';
+  }
+else
+  {
+  var x='N';
+  }
+  window.location.href='apagar_documento.php?nome='+x;
+}
+</script>";
 ?>
 </body>
 </html>

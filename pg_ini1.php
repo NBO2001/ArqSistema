@@ -45,10 +45,10 @@ include_once 'ConAL.php';
    req.send();
 
  }
-
+ setInterval(function(){ajax();},1000);
   </script>
 </head>
-<body id="pgini1">
+<body onload="ajax();" id="pgini1">
 
 <?php if($_SESSION['setor']=="Arquivo acadêmico"){
   $result_usuarioa = "SELECT sts,count(sts) FROM mensa WHERE sts LIKE '1' GROUP BY sts";
@@ -81,6 +81,7 @@ include_once 'ConAL.php';
 Pró-Reitoria de Ensino de Graduação<br>
 Departamento de Registro Acadêmico<br>
 Arquivo Acadêmico<br>
+
 </label>
 </div>
 <div>
@@ -164,10 +165,7 @@ echo "<div  id='chat'>
   <input type='text' name='msg' placeholder='Escreva a mensagen' autocomplete='off' required>
   <input type='submit' value='Enviar'>
   </form>
-</div>
-<script>
-setInterval(function(){ajax();},500);
-</script>";
+</div>";
 }
 ?>
 <label id="copra" style="">&copy;2019 N.B.O<label>
