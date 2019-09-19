@@ -93,6 +93,7 @@ Arquivo Acadêmico<br>
     <?php
    if ($_SESSION['msg']==4){
      echo "<li><a href='multup.php'>Adicionar documentos</a></li>";
+      echo "<li><a href='ad_registro.php'>Adicionar registro</a></li>";
    }
    ?>
     <li><a href="sair.php">Sair</a></li>

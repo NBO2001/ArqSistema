@@ -115,10 +115,44 @@ color: black;
   border: 1px solid black;
 }
 
+#ad_registro_from{
+	position: absolute;
+	text-align: center;
+	left: 5%;
+	top:150px;
+	height: 870px;
+	width: 800px;
 
+}
 
-
-
+#ad_registro_from form{
+	border-radius: 25px;
+	text-align: center;
+	font-size: 25px;
+	height: 840px;
+}
+#ad_registro_from input{
+	border:1px solid black;
+	border-radius: 25px;
+	margin: 3px;
+	width: 90%;
+	height:40px;
+	font-size: 25px;
+}
+#ad_registro_from label{
+	text-align: center;
+}
+#voltar_ad_registro{
+	position: absolute;
+	text-align: center;
+	left: 5%;
+	top:1000px;
+	height:40px;
+	width: 800px;
+	border:1px solid black;
+	border-radius: 25px;
+	font-size: 25px;
+}
 #logo{
 	background-color:red;
   width: 100%;
