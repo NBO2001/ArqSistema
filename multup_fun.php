@@ -26,6 +26,20 @@ if(!is_dir($dire)){
       $numerom= $numer[0];
       if ($numer[1]==1){
         $tipodoc = "FICHA CADASTRAL";
+      }else if($numer[1]==2){
+        $tipodoc = "PROCESSO";
+      }
+      else if($numer[1]==3){
+        $tipodoc = "REQUERIMENTO";
+      }
+      else if($numer[1]==4){
+        $tipodoc = "TCE";
+      }
+      else if($numer[1]==5){
+        $tipodoc = "HISTÓRICO ESCOLAR";
+      }
+      else if($numer[1]==6){
+        $tipodoc = "OUTRO TIPO DE FICHA";
       }
       $cladoc = explode('-',$numer[2]);
       $cladoc = $cladoc[0].'.'.$cladoc[1];
@@ -62,7 +76,7 @@ if(!is_dir($dire)){
           if(move_uploaded_file($arquivo['tmp_name'][$controle], $dire.$tipodoc."->".$horari.".pdf")){
             $nome_pdf = $tipodoc."->".$horari.".pdf";
             $can = "/In/pdf/".$nun."/".$nome_pdf;
-            $result_usuarioife = "SELECT * FROM Ife WHERE cod LIKE '125.43'";
+            $result_usuarioife = "SELECT * FROM Ife WHERE cod LIKE '$cladoc'";
             $resultado_usuarioife = mysqli_query($conn, $result_usuarioife);
             $row_usuarioife = mysqli_fetch_array($resultado_usuarioife);
             $tipo_doc = $row_usuarioife ['cod']." -- ".$row_usuarioife ['nome_doc'];

@@ -57,11 +57,6 @@ if($_COOKIE["tema"] <> "a"){
   <input  type='text' name='a1' value='' required><br>
   <label >Nome social: &nbsp</label><br>
   <input  type='text' name='a2' value=''><br>
-  <label  >Forma de evasão: &nbsp</label><br>
-  <input type="text" name='a3'  value="" required><br>
-  <label  >Ano de evsão: &nbsp</label><br>
-  <input type="number" name='a4'  value=""><br>
-
   <label >Matrícula: &nbsp</label><br>
   <input  type="text" name='a5'  value="" required><br>
   <label  >Sigla do curso: &nbsp</label><br>
@@ -72,9 +67,12 @@ if($_COOKIE["tema"] <> "a"){
   <input type="text" name='a7' required value=""><br>
   <label >Ano de ingresso: &nbsp</label><br>
   <input type="number" name='a8'  required value=""><br>
+  <label  >Forma de evasão: &nbsp</label><br>
+  <input type="text" name='a3'  value="" required><br>
+  <label  >Ano de evsão: &nbsp</label><br>
+  <input type="number" name='a4'  value=""><br>
   <label >Dados retirados do: &nbsp</label><br>
   <input type="text" name='a9'  required value=""><br><br>
-
 <input type="submit" name="adicionarre" value="Adicionar">
 
 </form>

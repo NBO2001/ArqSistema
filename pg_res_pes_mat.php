@@ -49,7 +49,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
       header("Location:pg_ini1.php");
       $_SESSION['ifon'] = "<script>alert('Ocorreu um erro')</script>";
     }else{
-          $vregistroduplos = "SELECT count(*) FROM Alunos WHERE Num_mat LIKE '$nun'";
+          $vregistroduplos = "SELECT count(*) FROM Alunos WHERE Num_mat LIKE '$nun%'";
           $resultado_resgr = mysqli_query($conn, $vregistroduplos);
           $row_usuariob = mysqli_fetch_array($resultado_resgr);
           if ($row_usuariob['count(*)']>1) {
@@ -57,7 +57,7 @@ $resultado_usuarioa = mysqli_query($conn, $result_usuarioa);
             $_SESSION['v_pesquisa_n_duplicado'] = $nun;
           }else{
 
-            $result_usuario = "SELECT * FROM Alunos WHERE Num_mat LIKE '$nun'";
+            $result_usuario = "SELECT * FROM Alunos WHERE Num_mat LIKE '$nun%'";
             $resultado_usuario = mysqli_query($conn, $result_usuario);
             $row_usuario = mysqli_fetch_array($resultado_usuario);
             if($row_usuario['id'] == ""){
@@ -163,11 +163,6 @@ if($_COOKIE["tema"] <> "a"){
 <label><?php if($row_usuario['Aev']==""){echo "Sem evasão";}else{ echo $row_usuario['Aev'];} ?>&nbsp&nbsp | &nbsp</label>
 <label style="color:#FE642E;">Dados retirados do: &nbsp</label>
 <label><?php echo $row_usuario['sistema']; ?></label><br>
-<label><?php
-if($row_usuario['STS'] == 1){
-  echo "<span style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVISO:A pasta não está no arquivo</span>";
-}else{
-echo ""; }?></label>
 <?php
 $cod = $row_usuario['Cod_cur']." - ".$row_usuario['Num_mat'];
 $_SESSION['lesa'] = $cod;

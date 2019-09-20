@@ -19,5 +19,11 @@ sistema<br></label>
 <input name="query" type="tex">
 <input type="submit">
 </form>
+<form method="POST" action="Adm_analise_fun.php" enctype="multipart/form-data">
+  <label>Arquivo</label>
+  <input type="file" name="arquivo"><br><br>
+
+  <input type="submit" value="Importar">
+</form>
 </body>
 </html>

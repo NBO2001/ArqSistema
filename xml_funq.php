@@ -8,10 +8,7 @@ if($query <> ""){
 
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
   $xml = '<?xml version="1.0" encoding="utf-8"?>';
-
-
   $xml .= '<natan>';
   foreach($resultado as $item){
 
