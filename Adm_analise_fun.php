@@ -48,7 +48,7 @@ fwrite($fp, $xml);
 fclose($fp);
 set_time_limit(0);
 $aquivoNome = 'querysu.xml';
-$arquivoLocal = '/opt/lampp/htdocs/ArqSistema/'.$aquivoNome;
+$arquivoLocal = '/opt/lampp/htdocs/'.$aquivoNome;
 
 if (!file_exists($arquivoLocal)) {
 
@@ -64,7 +64,7 @@ header('Content-Length: ' . filesize($aquivoNome));
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Pragma: public');
 header('Expires: 0');
-    readfile($aquivoNome);
+readfile($aquivoNome);
 
 $_SESSION['msg'] = "<p style='color: green;'>Carregado os dados com sucesso!</p>";
 //header("Location: Adm_analise.php");

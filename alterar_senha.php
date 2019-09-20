@@ -1,7 +1,8 @@
 <?php
 session_start();
 include_once "ConAL.php";
-$vla ="SELECT id FROM log WHERE ursu LIKE 'melry' ";
+$usuario = $_SESSION['usuarioname'];
+$vla ="SELECT id FROM log WHERE ursu LIKE '$usuario' ";
 $rvla = mysqli_query($conn, $vla) or die( "Ocorreu um erro");
 $idf = mysqli_fetch_array($rvla);
 if(isset($_COOKIE["tema"])){
