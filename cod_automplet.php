@@ -3,7 +3,7 @@ include_once 'ConAL.php';
 
 $assunto = filter_input(INPUT_GET,'term',FILTER_SANITIZE_STRING);
 
-$result_usuario = "SELECT Cod_cur,Nome_cur FROM Alunos WHERE Cod_cur LIKE '%".$assunto."%' OR Nome_cur LIKE '%".$assunto."%' GROUP BY Cod_cur ORDER BY Alunos.Cod_cur";
+$result_usuario = "SELECT Cod_cur,Nome_cur FROM Alunos WHERE Cod_cur LIKE '%".$assunto."%' OR Nome_cur LIKE '%".$assunto."%' GROUP BY Cod_cur ORDER BY Alunos.Cod_cur LIMIT 10";
 
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
