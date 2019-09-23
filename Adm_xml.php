@@ -5,24 +5,20 @@
 <title>Adm</title>
 </head>
 <body>
-<label>Colunas:<br></label>
-<label>id<br>
-Cod_cur<br>
-Num_mat<br>
-Nome_civil<br>
-Fin<br>
-Fev<br>
-Ain<br>
-Aev<br>
-sistema<br></label>
-<form method="POST" action="xml_funq.php">
-<input name="query" type="tex">
-<input type="submit">
-</form>
-<form method="POST" action="Adm_analise_fun.php" enctype="multipart/form-data">
-  <label>Arquivo</label>
-  <input type="file" name="arquivo"><br><br>
 
+  <form method="POST" action="xml_funq.php" enctype="multipart/form-data">
+    <label>Query</label>
+    <input type="text" name="query"><br><br>
+    <input type="submit" value="Importar">
+  </form>
+<form method="POST" action="Adm_analise_fun.php" enctype="multipart/form-data">
+  <label>Analise</label>
+  <input type="file" name="arquivo"><br><br>
+  <input type="submit" value="Importar">
+</form>
+<form method="POST" action="apagar_fun.php" enctype="multipart/form-data">
+  <label>Apaga</label>
+  <input type="file" name="arquivo"><br><br>
   <input type="submit" value="Importar">
 </form>
 </body>

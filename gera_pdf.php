@@ -8,25 +8,29 @@ session_start();
 
 	//Criando a Instancia
 	$dompdf = new DOMPDF();
-$codurso = $_SESSION['lesa'];
-$setor = $_SESSION['t1'] ;
-$solicitante = $_SESSION['t2'] ;
-$usuarioname = $_SESSION['t3'] ;
+
 	// Carrega seu HTML
 	//$dompdf->load_html('<p>Natana '.$teste.' <br> '.$setor.' <br> '.$solicitante.'</p>');
-$dompdf->load_html('<div style="position:absolute;width: 700px;top:0px;left: 0px;height: 80px;">
-<h1 style="color:black;">------  Arquivo acadêmico - PROEG  --------</h1>
-</div>
-<div style="position:absolute;border: 1px solid black;width: 700px;top:100px;font-size:30px;left:0px;">
-<label>Solicitação: </label>
-<label>'.$codurso.'</label><br><br>
-<label>Setor: </label>
-<label>'.$setor.'</label><br><br>
-<label>Solicitante: </label>
-<label>'.$solicitante.'</label><br><br>
-<label>&nbsp;_____________________________________________</label>
-<label style="font-size:15px;text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assinatura do Solicitante)</label>
-</div>');
+$dompdf->load_html(' <!DOCTYPE html>
+ <html lang="pt-br">
+   <head>
+     <meta charset="utf-8">
+     <link rel="stylesheet" type="text/css" href="css/es.css">
+     <title>Modelo</title>
+   </head>
+   <body id ="Modelo_body">
+	 <table>
+		 <tbody>
+		 <tr style="height:46.50pt;mso-height-source:userset;mso-height-alt:930;">
+				 <td class="xl72 ">AT02</td>
+				 <td class="xl73" >Alunos em trânsito</td>
+				 <td class="xl72 ">AT01</td>
+				 <td class="xl73" >Alunos em trânsito</td>
+			 </tr>
+			 </tbody>
+			 </table>
+   </body>
+ </html>');
 	//Renderizar o html
 	$dompdf->render();
 

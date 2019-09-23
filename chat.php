@@ -11,7 +11,7 @@ while($resubank = mysqli_fetch_array($rexea)){
     $kval ="*".$res[1];
   $res ="<a href='redir_mesn.php?texto=$kval'>". $resubank['uso'].":".$resubank['msg']."</a></n>";
   }else{
-    $res = $resubank['uso'].":".$resubank['msg']."</n>";
+    $res = $resubank['uso'].":".$resubank['msg']."<br>";
   }
   if($nome == $resubank['uso'] ){
     $usuariom = $resubank['uso'];

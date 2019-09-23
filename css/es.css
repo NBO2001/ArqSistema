@@ -81,6 +81,50 @@ color: black;
   text-align: center;
 
 }
+#Modelo_body{
+	background-color: inherit;
+}
+#Modelo_body table{
+width:741.95pt;
+border-collapse:collapse;
+table-layout:fixed;
+border:1px solid black;
+}
+#Modelo_body .xl72{
+font-weight: bold;
+font-size: 50px;
+height:46.50pt;
+width:155.90pt;
+border:1px solid black;
+}
+#Modelo_body .xl73{
+font-size: 20px;
+	width:155.35pt;
+	border:1px solid black;
+}
+#Modelo_body td{
+
+	border-right:.5pt solid black;
+	border-bottom:.5pt solid black;
+	border-bottom-style:hairline;
+}
+#Modelo_body .xl74{
+	font-weight: bold;
+	font-size: 40px;
+height:31.50pt;
+
+}
+#Modelo_body .xl76{
+	font-weight: bold;
+height:25.50pt;
+}
+#Modelo_body .xl78{
+height:24.00pt;
+
+}
+#Modelo_body .xl80{
+height:15.00pt;
+}
 
 #btnaltersenha{
   position: absolute;
@@ -142,6 +186,23 @@ color: black;
 #ad_registro_from label{
 	text-align: center;
 }
+#admini_buttons{
+	position: absolute;
+	top:150px;
+	left: 10%;
+	width:900px;
+	height:700px;
+	border:1px solid black;
+	border-radius:25px;
+}
+#admini_buttons button{
+margin: 7px;
+font-size: 30px;
+width:97%;
+height:60px;
+border:1px solid black;
+border-radius:25px;
+}
 #voltar_ad_registro{
 	position: absolute;
 	text-align: center;
@@ -171,6 +232,53 @@ left:0px;
 top:110px;
 
 }
+#relatorio_estilo{
+	position: absolute;
+	left: 10%;
+	top:150px;
+	border: 1px solid black;
+	border-radius:25px;
+width:800px;
+height:1000px;
+
+}
+#relatorio_estilo input{
+	margin: 5px;
+	font-size: 25px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius:25px;
+width:97%;
+height:60px;
+}
+#relatorio_estilo button{
+	margin: 5px;
+	font-size: 25px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius:25px;
+width:97%;
+height:60px;
+}
+#relatorio_estilo select{
+	margin: 5px;
+	font-size: 25px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius:25px;
+width:97%;
+height:60px;
+}
+#relatorio_estilo label{
+	margin: 5px;
+	display: block;
+	font-size: 25px;
+	text-align: center;
+	padding: 0px 0px;
+	width:97%;
+	height:40px;
+}
+
 #btnmensavisu{
 text-align: center;
 background-color: red;

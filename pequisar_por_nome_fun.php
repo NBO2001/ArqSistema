@@ -1,5 +1,75 @@
 <?php
+/*
 include_once 'ConAL.php';
+$style = "#Modelo_body{
+	background-color: inherit;
+}
+#Modelo_body table{
+width:741.95pt;
+border-collapse:collapse;
+table-layout:fixed;
+border:1px solid black;
+}
+#Modelo_body .xl72{
+font-weight: bold;
+font-size: 50px;
+height:46.50pt;
+width:155.90pt;
+border:1px solid black;
+}
+#Modelo_body .xl73{
+font-size: 20px;
+	width:155.35pt;
+	border:1px solid black;
+}
+#Modelo_body td{
+
+	border-right:.5pt solid black;
+	border-bottom:.5pt solid black;
+	border-bottom-style:hairline;
+}
+#Modelo_body .xl74{
+	font-weight: bold;
+	font-size: 40px;
+height:31.50pt;
+
+}
+#Modelo_body .xl76{
+	font-weight: bold;
+height:25.50pt;
+}
+#Modelo_body .xl78{
+height:24.00pt;
+
+}
+#Modelo_body .xl80{
+height:15.00pt;
+}
+";
+     // Montamos nosso HTML no PHP, da forma que quisermos
+     // \t é o tab, \n a quebra de linha
+     $html  = "<html>\n";
+     $html .= "\t<head><meta charset='utf-8'><style>$style</style>\n";
+     $html .= "\t\t<title>Etiquetas</title>\n";
+     $html .= "\t</head>\n";
+     $html .= "\t<body id ='Modelo_body'>\n";
+     $html .= "";
+     $html .= "\t</body>\n";
+     $html .= "</html>\n";
+
+     //... e vai montando o arquivo com variáveis etc
+     // e depois salva
+     $arquivo = "Etiquetas.html";
+     // Configurações header para forçar o download
+     header('Content-Disposition: attachment;filename="'.$arquivo.'"');
+     header('Cache-Control: max-age=0');
+     // Se for o IE9, isso talvez seja necessário
+     header('Cache-Control: max-age=1');
+
+     // Envia o conteúdo do arquivo
+     echo $html;
+     exit;
+
 /*try {
   $pdo = new PDO( 'mysql:host=localhost;dbname=Al', 'root', '' );
   $pdo -> query("SET NAMES UTF8");
@@ -32,16 +102,14 @@ $rexea = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 
 */
+//header("Location:/home/naatan/'Área de Trabalho'/In/pdf/teste.php");
 
-
-
-
+//$sre = shell_exec("sudo ./home/naatan/'Área de Trabalho'/test.sh");
+//echo $sre;
 
 /*
 echo "<script>window.open('gera_pdf.php','_blank');</script>";
 */
-
-
 
 
 

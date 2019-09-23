@@ -117,25 +117,15 @@ if($_COOKIE["tema"] <> "a"){
           echo "<li><a href='mensa_visu.php'>Mensagem</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";
        }else if($_SESSION['msg']==2){
-         if($row_usuario['STS'] == 1){
-           echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
-           echo "<li><a href='sair.php'>Sair</a></li>";
-         }else{
+
            echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";
-       }}else if($_SESSION['msg']== 3 or 4){
-         if($row_usuario['STS'] == 1){
-           echo "<li><a href='enviar.php'>Inserir documento</a></li>";
-           echo "<li><a href='alter_registro.php'>Altera registro</a></li>";
-           echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
-           echo "<li><a href='sair.php'>Sair</a></li>";
-         }else{
-
+       }else if($_SESSION['msg']== 3 or 4){
          echo "<li><a href='enviar.php'>Inserir documento</a></li>";
          echo "<li><a href='alter_registro.php'>Altera registro</a></li>";
          echo "<li><a href='mensa_re.php'>Mensagem</a></li>";
          echo "<li><a href='sair.php'>Sair</a></li>";}
-       }
+
        ?>
 
     		</ul>

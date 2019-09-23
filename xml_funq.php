@@ -5,13 +5,10 @@ if($query <> ""){
   $pdo -> query("SET NAMES UTF8");
   $stmt = $pdo->prepare("$query");
   $stmt->execute(array('id','Cod_cur','Num_mat','Nome_civil','Fin','Fev','Ain','Aev','sistema'));
-
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
   $xml = '<?xml version="1.0" encoding="utf-8"?>';
   $xml .= '<natan>';
   foreach($resultado as $item){
-
   	$xml .= '<table>';
   	$xml .= '<Id>'.$item['id'].'</Id>';
   	$xml .= '<Sigla_curso>'.$item['Cod_cur'].'</Sigla_curso>';
@@ -24,24 +21,15 @@ if($query <> ""){
   	$xml .= '<sistema>'.$item['sistema'].'</sistema>';
   	$xml .= '</table>';
   }
-
   $xml .= '</natan>';
-
   $fp = fopen('meus_links.xml', 'w+');
   fwrite($fp, $xml);
   fclose($fp);
-
-
-
-
       // Define o tempo máximo de execução em 0 para as conexões lentas
       set_time_limit(0);
       $aquivoNome = 'meus_links.xml';
-      $arquivoLocal = '/opt/lampp/htdocs/ArqSistema/'.$aquivoNome;
-
+      $arquivoLocal = '/opt/lampp/htdocs/'.$aquivoNome;
       if (!file_exists($arquivoLocal)) {
-
-
       exit;
       }
       $novoNome = 'me.xml';
