@@ -1,11 +1,33 @@
-<!doctype html>
+<?php
+session_start();
+if($_SESSION['msg']==""){
+  header("Location:index.php");
+}
+  if(isset($_SESSION['ifon'])){
+    echo $_SESSION['ifon'];
+    unset ($_SESSION['ifon']);
+
+  }
+if(isset($_COOKIE["tema"])){
+  $tema = $_COOKIE["tema"];
+}else{
+  setcookie("tema","a", (time() + (500 * 24 * 3600)));
+}
+?>
+<!Doctype html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cores de etiqueta</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" type="text/css" href="css/es.css">
+  <?php
+  if($_COOKIE["tema"] <> "a"){
+    echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
+  }
+
+  ?>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -330,7 +352,6 @@
       'IH57 --> Licenciatura em Artes Visuais - EAD - ITACOATIARA : Papel Reciclado',
       'IH58 --> Licenciatura em Artes Visuais - EAD - SANTA ISABEL DO RIO NEGRO : Rosa',
       'IH59 --> Licenciatura em Artes Visuais - EAD - TEFÉ : Amarelo',
-      ' -->  : Azul',
       'IH61 --> Licenciatura Indígena Políticas Educacionais e Desenvolvimento Sustenável Tukano 1° Licenciatura : Rosa',
       'IN01 --> Administração - Benjamin Constant : Branco',
       'IN02 --> Pedagogia - Benjamin Constant : Verde',
@@ -428,14 +449,6 @@
       'PA128 --> Ciências Naturais - Borba 1aLic : Amarelo',
       'PA129 --> Ciências Biológicas - Caapiranga - 1aLic : Verde',
       'PA130 --> Ciências Naturais - Codajás - 1aLic : Rosa',
-      ' -->  : Azul',
-      ' -->  : Branco',
-      ' -->  : Amarelo',
-      ' -->  : ',
-      ' -->  : ',
-      ' -->  : ',
-      ' -->  : ',
-      ' -->  : ',
       'PA20 --> Letras : ',
       'PA200 --> Matemática Careiro da Várzea 2° Licenciatura : Rosa',
       'PA201 --> Matemática Itacoatiara 2° Licenciatura : Azul',
@@ -780,8 +793,32 @@
   </script>
 </head>
 <body>
+  <div id="logoufam" >
 
-<div class="ui-widget">
+  <label for="chec">
+  <img width="100px" height="90px" src="ufam.png"/>
+  </label>
+  <label id="insti">Universidade Federal do Amazonas<br>
+  Pró-Reitoria de Ensino de Graduação<br>
+  Departamento de Registro Acadêmico<br>
+  Arquivo Acadêmico<br>
+
+  </label>
+  </div>
+  <div>
+  <input type="checkbox" id="chec">
+  <nav id="nave" >
+      <ul>
+        <li><a href="pg_ini1.php">Inicio</a></li>
+      <li><a href="altera_tema.php">Alterar tema</a></li>
+      <li><a href="sair.php">Sair</a></li>
+      </ul>
+  </nav>
+  </div>
+
+
+
+<div class="cor_etq_claaa">
   <label for="tags">Qual o curso?: </label>
   <input id="tags">
 </div>

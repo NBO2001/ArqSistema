@@ -125,7 +125,22 @@ height:24.00pt;
 #Modelo_body .xl80{
 height:15.00pt;
 }
+.cor_etq_claaa{
+	padding: 0px 0px;
+	position: absolute;
+	font-size: 25px;
+	top:200px;
+	left:10%;
+	height:100px;
+	width:800px;
 
+}
+.cor_etq_claaa input{
+height:50px;
+border: 1px dashed black;
+border-radius:25px;
+	width:400px;
+}
 #btnaltersenha{
   position: absolute;
   left: 25%;

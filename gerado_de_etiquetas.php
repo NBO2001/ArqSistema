@@ -67,14 +67,14 @@ if($contagem <= 2){
   $linha9 = "";
 
   $linha1 = $linha1."<td class='xl72' >$curso</td>
-        <td class='xl73' >Alunos em trânsito</td>";
+        <td class='xl73' >A$Nome_cur</td>";
   $linha3 = $linha3."<td class='xl74' colspan='2' >$Num_mat</td>";
   $linha4 = $linha4."<td class='xl76' colspan='2' >$Nome_civil</td>";
   $linha5 = $linha5."<td class='xl78' colspan='2' >$Fin</td>";
   $linha6 = $linha6."<td class='xl78' colspan='2' >$Ain</td>";
   $linha7 = $linha7."<td class='xl78' colspan='2'>$Fev</td>";
-  $linha8 = $linha8."<td class='xl80' colspan='2'></td>";
-  $linha9 = $linha9."<td class='xl80' colspan='2'>SIE</td>";
+  $linha8 = $linha8."<td class='xl80' colspan='2'>$Aev</td>";
+  $linha9 = $linha9."<td class='xl80' colspan='2'>$sistema</td>";
   $contagem = 2;
 }
 

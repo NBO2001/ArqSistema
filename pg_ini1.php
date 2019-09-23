@@ -26,7 +26,6 @@ include_once 'ConAL.php';
   <title>Tela inicial</title>
 
   <link rel="stylesheet" type="text/css" href="css/es.css">
-  <title>Teste</title>
   <?php
   if($_COOKIE["tema"] <> "a"){
     echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
@@ -91,6 +90,9 @@ Arquivo Acadêmico<br>
       <li><a href="alterar_senha.php">Alterar senha</a></li>
     <li><a href="altera_tema.php">Alterar tema</a></li>
     <?php
+    if($_SESSION['msg']>=2){
+      echo "<li><a href='cor_etq.php'>Consulta de etiqueta</a></li>";
+    }
    if ($_SESSION['msg']==4){
      echo "<li><a href='multup.php'>Adicionar documentos</a></li>";
       echo "<li><a href='ad_registro.php'>Adicionar registro</a></li>";

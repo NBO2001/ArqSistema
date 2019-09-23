@@ -1,16 +1,16 @@
 <?php
 session_start();
-include_once "Conec_PDO.php";
 if(isset($_SESSION['query'])){
   $query = $_SESSION['query'];
 }
-
+$pdo = new PDO( 'mysql:host=localhost;dbname=Al', 'root', '' );
+$pdo -> query("SET NAMES UTF8");
   $stmt = $pdo->prepare("$query");
   $stmt->execute(array('id','Cod_cur','Num_mat','Nome_civil','Nome_cur','Fin','Fev','Ain','Aev','sistema'));
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   $dadosXls  = "";
-  $dadosXls .= "  <table border='1' >";
+  $dadosXls .= "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><table border='1' >";
 $dadosXls .= "          <tr>";
   $dadosXls .= "          <th>Id</th>";
   $dadosXls .= "          <th>Sigla_curso</th>";
@@ -43,7 +43,7 @@ $dadosXls .= "  </table>";
       // Definimos o nome do arquivo que será exportado
       $arquivo = "Relatório.xls";
       // Configurações header para forçar o download
-      header('Content-Type: application/vnd.ms-excel');
+      header('Content-Type: application/vnd.ms-excel; charset=uft-8');
       header('Content-Disposition: attachment;filename="'.$arquivo.'"');
       header('Cache-Control: max-age=0');
       // Se for o IE9, isso talvez seja necessário
