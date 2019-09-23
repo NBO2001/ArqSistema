@@ -55,6 +55,7 @@ if($_COOKIE["tema"] <> "a"){
    <label>Ano:</label>
  <input name="query" type="number" min="1900" max="<?php $data=date('Y-m-d');$par = explode('-',$data); echo $par[0]; ?>"><br>
  <label>Curso:</label>
+ 
   <input id="assunto" name="curso" type="text"><br>
   <label>Forma de ingresso:</label>
   <input name="fi" type="text"><br>
