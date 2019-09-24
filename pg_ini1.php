@@ -90,9 +90,6 @@ Arquivo Acadêmico<br>
       <li><a href="alterar_senha.php">Alterar senha</a></li>
     <li><a href="altera_tema.php">Alterar tema</a></li>
     <?php
-    if($_SESSION['msg']>=2){
-      echo "<li><a href='cor_etq.php'>Consulta de etiqueta</a></li>";
-    }
    if ($_SESSION['msg']==4){
      echo "<li><a href='multup.php'>Adicionar documentos</a></li>";
       echo "<li><a href='ad_registro.php'>Adicionar registro</a></li>";
@@ -117,6 +114,8 @@ if($_SESSION['msg']==1){
   </form><br>";
 
 }else if ($_SESSION['msg']==2){
+  $fun = "window.location.href='cor_etq.php'";
+echo "<button class='bntv1' onclick=".$fun.">Pesquisar curso</button><br><br>";
 
 
 if($_SESSION['setor']=="Arquivo acadêmico"){
@@ -131,7 +130,12 @@ if($_SESSION['setor']=="Arquivo acadêmico"){
 }else if ($_SESSION['msg']==3){
 
 if($_SESSION['setor']=="Arquivo acadêmico"){
-  echo"<form  action='mensa_re.php'>
+  $fun = "window.location.href='cor_etq.php'";
+
+  echo"
+  <button class='bntv1' onclick=".$fun.">Pesquisar curso</button><br><br>
+
+  <form  action='mensa_re.php'>
    <button class='bntv1'  id='btntest4'>Mensagem[$nun_msg]</button>
   </form><br>";
 
@@ -139,8 +143,8 @@ if($_SESSION['setor']=="Arquivo acadêmico"){
 
 }
 }else if ($_SESSION['msg']==4){
-
-
+  $fun = "window.location.href='cor_etq.php'";
+echo "<button class='bntv1' onclick=".$fun.">Pesquisar curso</button><br><br>";
 if($_SESSION['setor']=="Arquivo acadêmico"){
   echo"<form  action='mensa_re.php'>
    <button class='bntv1'  id='btntest4'>Mensagem[$nun_msg]</button>

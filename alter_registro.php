@@ -38,7 +38,7 @@ $_SESSION['retorno'] = $a5;
   <input name='a4' class="infaluno" value="<?php echo $row_usuariob['Aev']; ?>"><br>
 <h1 class="titulosform">Dados não alteráveis<h1>
   <label class="infaluno">Matrícula: &nbsp</label>
-  <input class="infaluno"  value="<?php echo $row_usuariob['Num_mat']; ?>" readonly><br>
+  <input class="infaluno" name="a5" value="<?php echo $row_usuariob['Num_mat'];?>" <?php if($_SESSION['msg']<4){echo "readonly";} ?> ><br>
   <label class="infaluno" >Curso: &nbsp</label>
   <input class="infaluno" readonly value="<?php echo $row_usuariob['Cod_cur']."--".$row_usuariob['Nome_cur']; ?>"><br>
   <label class="infaluno">Forma de ingresso: &nbsp</label>
@@ -66,7 +66,7 @@ $a1 = filter_input(INPUT_POST,'a1',FILTER_SANITIZE_STRING);
 $a2 = filter_input(INPUT_POST,'a2',FILTER_SANITIZE_STRING);
 $a3 = filter_input(INPUT_POST,'a3',FILTER_SANITIZE_STRING);
 $a4 = filter_input(INPUT_POST,'a4',FILTER_SANITIZE_STRING);
-
+$a6 = filter_input(INPUT_POST,'a5',FILTER_SANITIZE_STRING);
 /*$a11 = $row_usuariob['Num_mat'];
 
 $a6 = $row_usuariob['Cod_cur'];
@@ -75,12 +75,16 @@ $a8 = $row_usuariob['Fin'];
 $a9 = $row_usuariob['Ain'];
 $a10 = $row_usuariob['sistema'];
 $a12 = $row_usuariob['STS'];*/
+if($_SESSION['msg']<4)
+{
+  $vl ="UPDATE Alunos SET Nome_civil = '$a1', Nome_social = '$a2', Fev = '$a3', Aev = '$a4' WHERE Alunos.id =".$a5;
+}else if($_SESSION['msg']==4){
+  $vl ="UPDATE Alunos SET Nome_civil = '$a1',Num_mat='$a6', Nome_social = '$a2', Fev = '$a3', Aev = '$a4' WHERE Alunos.id =".$a5;
+}
 
-$vl ="UPDATE Alunos SET Nome_civil = '$a1', Nome_social = '$a2', Fev = '$a3', Aev = '$a4' WHERE Alunos.id =".$a5;
-$rvl = mysqli_query($conn, $vl);
+$rvl = mysqli_query($conn, $vl) or die(mysqli_error($conn));
 
 $_SESSION['ifon']="<script>alert('Alterado com sucesso')</script>";
-$_SESSION['ref'] = "<script>window.location.reload();</script>";
 header("Location:pg_res_pes_mat.php");
 }
 ?>
