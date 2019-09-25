@@ -1,4 +1,5 @@
 <?php
+//echo $_SERVER['REMOTE_ADDR'];
 /*
 include_once 'ConAL.php';
 $style = "#Modelo_body{

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if($_SESSION['msg']<>4){
+  header("Location:index.php");
+}
 $pdo = new PDO( 'mysql:host=localhost;dbname=Al', 'root', '' );
 $pdo -> query("SET NAMES UTF8");
 
@@ -32,6 +35,20 @@ td{
 </style>
 </head>
 <body>
+  <form method="POST" enctype="multipart/form-data">
+        <label>Ver tabelas</label>
+    <SELECT name="tabelasres">
+      <?php foreach($resultado as $item){
+      echo "<option>".$item['Tables_in_Al']."</option>";
+    } ?>
+    </select>
+    <?php
+    if(isset($_SESSION['cm'])){
+      echo "<span>".$_SESSION['cm']."</span>";
+    }
+    ?>
+    <input type="submit" name='ver_estru' value="Abrir estrutura">
+  </form>
   <form method="POST" enctype="multipart/form-data">
         <label>Ver tabelas</label>
     <SELECT name="tabelas">
@@ -109,6 +126,18 @@ td{
 </body>
 </html>
 <?php
+if(isset($_POST['ver_estru'])){
+  $tabela2 = $_POST['tabelasres'];
+  $stmtcm = $pdo->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tabela2'");
+  $stmtcm->execute(array('COLUMN_NAME'));
+  $resultadocm = $stmtcm->fetchAll(PDO::FETCH_ASSOC);
+  $Nome_tabelas ="";
+
+  foreach($resultadocm as $itemcm){
+  $Nome_tabelas .= $itemcm['COLUMN_NAME']."<br>";
+}$_SESSION['cm']= $Nome_tabelas;
+
+}
 if(isset($_POST['brmva'])){
   $tabela = $_POST['tabelas'];
   $complento = $_POST['querya'];

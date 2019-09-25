@@ -1,6 +1,15 @@
 <?php
 session_start();
 include_once 'ConAL.php';
+if(isset($_SESSION['cont_tent'])){
+if($_SESSION['cont_tent']<4){
+  $_SESSION['ifon'] = "<script>alert('Tente mais tarde, você está temporariamente bloqueado!!')</script>";
+   header("Location:index.php");
+   die;
+}
+}else{
+  $_SESSION['cont_tent'] = 0;
+}
   $s = filter_input(INPUT_POST,"btnlo",FILTER_SANITIZE_STRING);
   $ursuario = filter_input(INPUT_POST,'nuso',FILTER_SANITIZE_STRING);
   $ursuario = strtoupper($ursuario);
@@ -25,13 +34,16 @@ if($ursuario==""){
 
 
   if($ln == ""){
-    header("Location:index.php");
+   header("Location:index.php");
+    $_SESSION['cont_tent'] += 1;
     $_SESSION['ifon'] = "<script>alert('Senha ou login invalida!!')</script>";
   }else if ($lns <> $ursuario ) {
+    $_SESSION['cont_tent'] += 1;
     header("Location:index.php");
     $_SESSION['ifon'] = "<script>alert('Senha ou login invalida!!')</script>";
   }else if ($lnss <> $senursuario) {
     header("Location:index.php");
+    $_SESSION['cont_tent'] += 1;
     $_SESSION['ifon'] = "<script>alert('Senha ou login invalida!!')</script>";
   }else{
     $acesso_nivel = $row_usuarioa['acesso'];
