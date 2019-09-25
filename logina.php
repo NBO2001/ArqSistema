@@ -37,14 +37,17 @@ if($ursuario==""){
    header("Location:index.php");
     $_SESSION['cont_tent'] += 1;
     $_SESSION['ifon'] = "<script>alert('Senha ou login invalida!!')</script>";
+    die;
   }else if ($lns <> $ursuario ) {
     $_SESSION['cont_tent'] += 1;
     header("Location:index.php");
     $_SESSION['ifon'] = "<script>alert('Senha ou login invalida!!')</script>";
+    die;
   }else if ($lnss <> $senursuario) {
     header("Location:index.php");
     $_SESSION['cont_tent'] += 1;
     $_SESSION['ifon'] = "<script>alert('Senha ou login invalida!!')</script>";
+    die;
   }else{
     $acesso_nivel = $row_usuarioa['acesso'];
     $usuarioname = $row_usuarioa['ursu'];
