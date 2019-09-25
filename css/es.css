@@ -27,6 +27,89 @@ nav{
 	transition: all .5s;
 
 }
+.formulario_login{
+  width: 360px;
+  background: #28ACB5;
+  height: 400px;
+  padding: 80px 40px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.formulario_login h1{
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.txtb{
+  border-bottom: 2px solid #adadad;
+  position: relative;
+  margin: 40px 0;
+}
+
+.txtb input{
+  font-size: 15px;
+  color: #333;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: none;
+  padding: 0 5px;
+  height: 40px;
+}
+
+.txtb span::before{
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: white;
+  transform: translateY(-50%);
+  z-index: -1;
+  transition: .5s;
+}
+
+.txtb span::after{
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(120deg,#3498db,#8e44ad,red);
+  transition: .5s;
+}
+
+.focus + span::before{
+  top: -5px;
+}
+.focus + span::after{
+  width: 100%;
+}
+
+.logbtn{
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: linear-gradient(120deg,#3498db,#8e44ad,#3498db);
+  background-size: 200%;
+  font-size: 25px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.logbtn:hover{
+  background-position: right;
+}
+
+footer{
+  position: absolute;
+  top:100%;
+}
 #chec:checked ~ #nave
 {
 transform: translateX(250px);
@@ -318,7 +401,7 @@ border-radius: 25px;
 	background-color:white;
 	position:absolute;
 	width:500px;
-	top:78%;
+	top:610px;
 	left: 30%;
 	font-size: 25px;
 	border:1px solid black;
@@ -347,9 +430,9 @@ color: red;
 width:100%;
 }
 #campo{
+	top:700px;
 	position:absolute;
 left: 30%;
-	top:91%;
 }
 #campo input{
 font-size: 25px;
@@ -412,29 +495,8 @@ border-radius: 15px;
 	font-size: 40px;
 	height:10%;
 }
-#btnlogin{
-  position:absolute;
-  top:180px;
-  left:50px;
-  width:400px;
-  height:10%;
-  font-size: 20px;
-  color:white;
-  background-color: black;
-  border: 1px solid black;
-  border-radius: 15px;
 
-}
-#login{
-  border: 1px solid black;
-  border-radius: 15px;
-  height:50%;
-}
-.loginfom{
-  border-radius: 15px;
-  border: 1px solid black;
 
-}
 #pesq_mt{
 	font-size: 25px;
 }
@@ -723,17 +785,26 @@ padding: 5px 5px;
 
 }
 @media (max-width: 1000px) {
+	.formulario_login{
+		padding: 10px 30px;
+		font-size: 140px;
+		width: 80%;
+	height: 80%;
+	}
+	.formulario_login input{
+	height: 150px;
+	font-size: 140px;
 
-#login{
-  position: absolute;
-  top:5%;
-  left:0;
-  height:70%;
-  width:100%;
-}
+	}
+	.focus + span::before{
+	top: -15px;
+	}
+
+
+
 #chat{
 	width:100%;
-	top:1150px;
+	top:1400px;
 	left: 0%;
 	font-size: 55px;
 	border:1px solid black;
@@ -746,7 +817,7 @@ padding: 5px 5px;
 	position:absolute;
 	left: 5%;
 	width:90%;
-	top:1350px;
+	top:1630px;
 }
 #campo input{
 
@@ -769,15 +840,7 @@ height:50px;
   padding:2px 3px;
   text-align:center;
 }
-#btnlogin{
-  position: absolute;
-  top:55%;
-  left:0%;
-  width:100%;
-  height:10%;
-  font-size: 50px;
 
-}
 #tabn{
 	position: absolute;
 	overflow: auto;
@@ -809,6 +872,9 @@ height:50px;
 }
 
 }
+
+
+
 #copra{
   position: absolute;
    top:100%;
@@ -972,7 +1038,6 @@ width:100%;
   	border: 1px solid black;
   	font-size: 600%;
   	left: 0%;
-  	background-color: #032490;
   	color:white;
   	height: 240px;
   	width: 850px;

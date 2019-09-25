@@ -30,7 +30,6 @@ include_once 'ConAL.php';
   if($_COOKIE["tema"] <> "a"){
     echo "<link rel='stylesheet' type='text/css' href='css/$tema.css'>";
   }
-
   ?>
   <script type="text/javascript">
  function ajax(){
