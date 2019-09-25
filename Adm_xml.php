@@ -49,6 +49,11 @@ td{
     ?>
     <input type="submit" name='ver_estru' value="Abrir estrutura">
   </form>
+  <form method="POST">
+  <label>Instrução sql</label>
+  <input name="ins_sql" type="text">
+  <input type="submit" name ="brnsql" value="Execultar">
+</form>
   <form method="POST" enctype="multipart/form-data">
         <label>Ver tabelas</label>
     <SELECT name="tabelas">
@@ -117,6 +122,7 @@ td{
       $msg.= "</tr>";
       $con++;
     }echo $msg;
+
   }
   ?>
 
@@ -126,6 +132,16 @@ td{
 </body>
 </html>
 <?php
+if(isset($_POST['brnsql'])){
+  $sql = $_POST['ins_sql'];
+  $consut = $pdo->prepare("$sql");
+
+try{
+    $consut->execute();
+}catch(PDOException $e){
+    echo $e->getMessage();
+}
+}
 if(isset($_POST['ver_estru'])){
   $tabela2 = $_POST['tabelasres'];
   $stmtcm = $pdo->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tabela2'");
@@ -136,7 +152,7 @@ if(isset($_POST['ver_estru'])){
   foreach($resultadocm as $itemcm){
   $Nome_tabelas .= $itemcm['COLUMN_NAME']."<br>";
 }$_SESSION['cm']= $Nome_tabelas;
-
+echo "<script>window.open('Adm_xml.php','_top');</script>";
 }
 if(isset($_POST['brmva'])){
   $tabela = $_POST['tabelas'];
