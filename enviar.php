@@ -105,6 +105,7 @@ if($_COOKIE["tema"] <> "a"){
     <option>TCE</option>
     <option>Histórico Escolar</option>
     <option>Outro tipo de Ficha</option>
+    <option>Ofício</option>
   </select><br><br>
 
   <label>Classificação do documento:&nbsp;</label><br><br>
