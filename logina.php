@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'ConAL.php';
-if(isset($_SESSION['cont_tent'])){
+/*if(isset($_SESSION['cont_tent'])){
 if($_SESSION['cont_tent']<4){
   $_SESSION['ifon'] = "<script>alert('Tente mais tarde, você está temporariamente bloqueado!!')</script>";
    header("Location:index.php");
@@ -9,7 +9,7 @@ if($_SESSION['cont_tent']<4){
 }
 }else{
   $_SESSION['cont_tent'] = 0;
-}
+}*/
   $s = filter_input(INPUT_POST,"btnlo",FILTER_SANITIZE_STRING);
   $ursuario = filter_input(INPUT_POST,'nuso',FILTER_SANITIZE_STRING);
   $ursuario = strtoupper($ursuario);
