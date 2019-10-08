@@ -160,7 +160,7 @@ if("<?php echo $_SESSION['acesso'];?>" == 4){
     modal: true,
     buttons: {
         'Visualizar': function() {
-          $( window.open('apagar_documento.php?id='+d,'_blank') ).dialog( 'close ');
+          $( window.open('pdf_visu.php?id='+d,'_blank') ).dialog( 'close ');
         },
         Cancel: function() {
           $( this ).dialog( 'close' );
