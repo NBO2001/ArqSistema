@@ -138,7 +138,7 @@ if(isset($_POST['brnsql'])){
   echo $sql;
  if($consut->execute()){
    echo "ok";
-
+ }
 }
 if(isset($_POST['ver_estru'])){
   $tabela2 = $_POST['tabelasres'];
