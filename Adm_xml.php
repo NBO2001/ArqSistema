@@ -136,9 +136,7 @@ if(isset($_POST['brnsql'])){
   $sql = $_POST['ins_sql'];
   $consut = $pdo->prepare("$sql");
   echo $sql;
- if($consut->execute()){
-   echo "ok";
- }
+  $consut->execute();
 }
 if(isset($_POST['ver_estru'])){
   $tabela2 = $_POST['tabelasres'];
