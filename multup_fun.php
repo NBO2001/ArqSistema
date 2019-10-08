@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['msg']<>4){
+if($_SESSION['acesso']<>4){
  header("Location:index.php");
 }
 
