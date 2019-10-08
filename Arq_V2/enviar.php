@@ -102,6 +102,7 @@ if($_COOKIE["tema"] <> "a"){
     <option>Histórico Escolar</option>
     <option>Outro tipo de Ficha</option>
     <option>Ofício</option>
+    <option>Formulário de correção de notas e faltas</option>
   </select><br><br>
 
   <label>Classificação do documento:&nbsp;</label><br><br>
