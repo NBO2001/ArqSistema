@@ -182,7 +182,7 @@ $arquivoLocal = '/opt/lampp/htdocs/Arq_V2/'.$arquivo;
 if (!file_exists($arquivoLocal)) {
 exit;
 }
-$novoNome = 'Etq_geradas.xlsx';
+$novoNome = 'Etq_geradas.html';
 header('Content-Description: File Transfer');
 header('Content-Disposition: attachment; filename="'.$novoNome.'"');
 header('Content-Type: application/octet-stream');
