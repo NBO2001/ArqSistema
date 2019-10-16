@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['acesso'] <> 4){
+if($_SESSION['acesso'] < 1){
   header("Location:index.php");
   die;
 }
