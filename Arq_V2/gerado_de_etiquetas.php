@@ -19,7 +19,6 @@ $tbodya4 ="<tr>";
 $tbodya5 ="<tr>";
 $tbodya6="<tr>";
 
-
 $linha1 = "";
 $linha3 = "";
 $linha4 = "";
@@ -41,7 +40,7 @@ $Ain = $res['Ain'];
 $Nome_cur = $res['Nome_cur'];
 $Aev = $res['Aev'];
 $sistema = $res['sistema'];
-if($contagem <= 2){
+if($contagem < 3){
   $linha1 = $linha1."<td class='xl72' >$curso</td>
         <td class='xl73' >$Nome_cur</td>";
   $linha3 = $linha3."<td class='xl74' colspan='2' >$Num_mat</td>";
@@ -107,10 +106,10 @@ if(isset($tabelat[$ab+3])){
 }
 if($ab == 0){
   $tabela =$tabela."<div class ='div1'><table>".$am1.$am2.$am3.$am4."</table></div>";
-  $ab = $ab + 5;
+  $ab = $ab + 4;
 }else{
   $tabela =$tabela."<div class ='div2'><table>".$am1.$am2.$am3.$am4."</table></div>";
-  $ab = $ab + 5;
+  $ab = $ab + 4;
 }
 
 }
