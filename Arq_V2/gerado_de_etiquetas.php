@@ -203,6 +203,6 @@ header('Pragma: public');
 header('Expires: 0');
 // Envia o arquivo para o cliente
 readfile($arquivo);
-      exit;
-header("Location:gerador_de_etq.php");
+unlink('/opt/lampp/htdocs/Arq_V2/'.$arquivo);
+header("Location:tela_inicial.php");
       ?>

@@ -224,6 +224,59 @@ border: 1px dashed black;
 border-radius:25px;
 	width:400px;
 }
+#iformacao_up{
+	border: 1px solid black;
+	margin: 5px;
+	padding: 5px;
+	color: red;
+	border-radius: 15px;
+	font-size: 18px;
+}
+#iformacao_up .tab{
+	font-size: 17px;
+}
+#formulario_upload{
+	border: 1px solid black;
+	margin: 5px;
+	border-radius: 15px;
+	font-size: 18px;
+}
+#formulario_upload label{
+	border: 1px solid black;
+	border-radius: 15px;
+	display: block;
+	text-align: center;
+	padding: 5px;
+	background-color: #F5F5DC;
+	margin: 5px;
+	height:30px;
+	width: 90%;
+}
+#formulario_upload input[type='submit']{
+	border: 1px solid black;
+	border-radius: 15px;
+	margin: 5px;
+	display: block;
+	text-align: center;
+	background-color: #F5F5DC;
+	padding: 5px;
+	height:30px;
+	width: 90%;
+}
+#formulario_upload button{
+	border: 1px solid black;
+	border-radius: 15px;
+	margin: 5px;
+	display: block;
+	text-align: center;
+	background-color: #F5F5DC;
+
+	height:30px;
+	width: 90%;
+}
+#checa{
+	display: none;
+}
 #btnaltersenha{
   position: absolute;
   left: 25%;
