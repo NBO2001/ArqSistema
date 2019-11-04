@@ -54,7 +54,7 @@ if(isset($_SESSION['ifon'])){
       <span>-> É de suma importancia que todos os espaços em brando esteja preenchidos com NULL.</span><br>
       <span>-> Não será inserido dados em que o número de matricula já está registrado no banco de dados.</span><br>
       <span>-> A planilha deve obrigatoriamente ter 10 colunas na seguinte ordem:</span><br>
-      <span class='tab'>| Sigla_curso | Numero_matricula | Nome_civil | Curso | Forma_ingresso | Forma_evassao | Ano_ingresso | Ano_evassao | Sistema | Nome_social |.</span><br>
+      <span class='tab'>| Sigla_curso | Numero_matricula | Nome_civil | Nome do curso | Forma_ingresso | Forma_evassao | Ano_ingresso | Ano_evassao | Sistema | Nome_social |.</span><br>
     </div>
     <div id="formulario_upload">
     <form method="POST" action="upload_por_xml_funcao.php"  enctype="multipart/form-data">
