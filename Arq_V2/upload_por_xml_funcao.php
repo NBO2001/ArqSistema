@@ -24,14 +24,14 @@ if(!empty($_FILES['up_xml']['tmp_name'])){
       $nome = isset($linha->getElementsByTagname('Data')->item(2)->nodeValue)
       ?$linha->getElementsByTagname('Data')->item(2)->nodeValue : "null";
 
-      $forma_ingresso = isset($linha->getElementsByTagname('Data')->item(3)->nodeValue)
-      ?$linha -> getElementsByTagname('Data') -> item(3)->nodeValue : "null";
+      $forma_ingresso = isset($linha->getElementsByTagname('Data')->item(4)->nodeValue)
+      ?$linha -> getElementsByTagname('Data') -> item(4)->nodeValue : "null";
 
-      $forma_evasao = isset($linha->getElementsByTagname('Data')->item(4)->nodeValue)
-      ?$linha->getElementsByTagname('Data')->item(4)->nodeValue : "null";
-
-      $nome_curso = isset($linha->getElementsByTagname('Data')->item(5)->nodeValue)
+      $forma_evasao = isset($linha->getElementsByTagname('Data')->item(5)->nodeValue)
       ?$linha->getElementsByTagname('Data')->item(5)->nodeValue : "null";
+
+      $nome_curso = isset($linha->getElementsByTagname('Data')->item(3)->nodeValue)
+      ?$linha->getElementsByTagname('Data')->item(3)->nodeValue : "null";
 
       $periodo_ingesso = isset($linha->getElementsByTagname('Data')->item(6)->nodeValue)
       ?$linha->getElementsByTagname('Data') -> item(6)->nodeValue : "null";
