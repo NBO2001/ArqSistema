@@ -204,5 +204,5 @@ header('Expires: 0');
 // Envia o arquivo para o cliente
 readfile($arquivo);
 unlink('/opt/lampp/htdocs/Arq_V2/'.$arquivo);
-header("Location:tela_inicial.php");
+//header("Location:tela_inicial.php");
       ?>
