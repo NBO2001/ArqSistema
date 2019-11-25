@@ -2,6 +2,7 @@
 *{
 	padding:0px;
 	margin: 0px;
+	font-family: courier,arial,helvetica;
 }
 body{
 background-color:	#B0C4DE;
@@ -27,6 +28,7 @@ nav{
 	transition: all .5s;
 
 }
+
 .formulario_login{
   width: 360px;
   background: #28ACB5;
@@ -302,6 +304,7 @@ border-radius:25px;
   border-radius: 15px;
   border: 1px solid black;
 }
+
 #verificar_ad_uso{
 	border:1px solid black;
 	border-radius:25px;
@@ -994,6 +997,25 @@ padding: 5px 5px;
 	border: 1px solid black;
 	border-radius: 25px;
 	padding: 5px 5px;
+}
+#status{
+	position: absolute;
+	text-align: center;
+	font-size: 20px;
+	top:130px;
+	left: 30%;
+	width: 600px;
+	border: solid black 1px;
+	border-radius: 15px;
+	height: 300px;
+	padding: 15px;
+	background-color: #ADD8E6;
+	}
+#status progress{
+	border: solid black 1px;
+	width: 400;
+	padding: 4px;
+	border-radius: 10px;
 }
 
 #mesga a{

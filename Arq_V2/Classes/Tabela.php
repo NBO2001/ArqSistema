@@ -26,7 +26,6 @@ function pesquisa_doc(){
                <td style='font-size:17px;'>".$item['class_doc']."</td>
                <td style='font-size:17px;'>".$item['nome']."</td>
                <td style='font-size:15px;'>".$item['ano_doc']."</td>
-               <td>".$item['data_inserido']."</td>
                </tr>";
     }
 }
@@ -111,7 +110,6 @@ function exibir_tabela(){
                <th>Tipo de <br> documento</th>
                <th>Descrição</th>
                <th>Ano do documento</th>
-               <th>Inserido em:</th>
           <tr>
      </thead>
      <tbody>

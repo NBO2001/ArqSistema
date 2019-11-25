@@ -8,7 +8,8 @@ if($_SESSION['acesso']== 1 or $_SESSION['acesso']== 2 or $_SESSION['acesso']== "
   unset ($_SESSION['ifon']);
 
 include_once 'ConAL.php';
-
+  $conf = fopen('conf.txt','r');
+  $conf = fgets($conf, 1024);
   $nome = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
   $ano = filter_input(INPUT_POST,'ano',FILTER_SANITIZE_STRING);
   $tipo_doc =filter_input(INPUT_POST,'assunto',FILTER_SANITIZE_STRING);
@@ -94,7 +95,7 @@ $_SESSION['ref'] = "<script>window.location.reload();</script>";
   }
 
   $destin_fin = $row_usuario['destin_fin'];
-  $dire = "/home/arquivo/Área de Trabalho/In/pdf/".$nun."/";
+  $dire = "$conf/In/pdf/".$nun."/";
   mkdir($dire);
   chmod ($dire,0777);
   if(move_uploaded_file($_FILES['pdf']['tmp_name'],$dire.$tipo_docu." -- ".$horari.".pdf")){
