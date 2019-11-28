@@ -151,11 +151,7 @@ if($_COOKIE["tema"] <> "a"){
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <script>
-    $(function () {
-        $("#assunto").autocomplete({
-            source: 'proc_pesq_msg.php'
-        });
-    });
+
 </script>
 <script>
 

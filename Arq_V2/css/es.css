@@ -1,8 +1,17 @@
 @charset "UTF-8";
+/*
+*Author: Natanael B. OLiveira
+*Email Author: natanbezerr63@gmail.com
+*Date: 28/11/2019
+*/
+/*
+*font-family:Calibri,Arial Narrow,Verdana,Helvética,arial,helvetica
+*
+*/
 *{
 	padding:0px;
 	margin: 0px;
-	font-family: arial,helvetica;
+	font-family:Calibri,Arial Narrow,arial,helvetica;
 }
 body{
 background-color:	#B0C4DE;
@@ -1370,9 +1379,54 @@ width:100%;
     border-radius: 20px;
 
   }
-
-
+}
+#bodymlt form{
+	font-size:25px;
+	position:absolute;
+	width:850px;
+	top:700px;
+	left:100px;
+}
+#bodymlt form input[type='submit']{
+	width:450px;
+	height:40px;
+	font-size:24px;
+	border: solid black 1px;
+	border-radius: 10px;
 }
 
-
+#campoOriegem div{
+	margin:2px;
+	padding:5px;
+	border: solid black 1px;
+}
+#revbutton{
+	width:20px;
+	height:20px;
+	background-color:#DC143C;
+	font-size:14px;
+	border-radius:50px;
+	float:right;
+}
+#campoOriegem input[type='text'],#campoOriegem input[type='number'],#campoOriegem select{
+	font-size:23px;
+	float:right;
+	width:300px;
+}
+#controle_add{
+	position:absolute;
+	top:650px;
+	left:100px;
+}
+#controle_add input[type='text']{
+	width:250px;
+	height:30px;
+	font-size:23px;
+}
+#controle_add button{
+	width:190px;
+	height:40px;
+	font-size: 26px;
+	border: solid black 1px;
+	border-radius: 10px;
 }

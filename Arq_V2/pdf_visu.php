@@ -37,7 +37,19 @@ if (isset($local)){
 		header('Content-Transfer-Encoding; binary');
 		header('Accept-Ranges; bytes');
 		readfile($file);
-	}else{
+	}elseif (file_exists($conf."/In/pdf/".$row_usuarioa['can'])){
+		$inser = "INSERT INTO acessos (id, id_doc, uso_ac, uso_set, dt_acesso) 
+		VALUES (NULL, '$nome', '$usuario', '$setor', '$data')";
+		mysqli_query($conn, $inser);
+		$file = $conf."/In/pdf/".$row_usuarioa['can'];
+		$filename = $pdf_name;	
+		header('Content-type: application/pdf');
+		header('Content-Disposition: inline; filename="' .$filename. '"');
+		header('Content-Transfer-Encoding; binary');
+		header('Accept-Ranges; bytes');
+		readfile($file);
+	}
+	else{
 		echo "<script>alert('Ocorreu um erro [document does not exist], reporte ao administrador')</script><script>javascript:window.close()</script>";
 	}	
 }else{
