@@ -37,7 +37,7 @@ for ($controle = 0; $controle < count($arquivo['name']); $controle++){
       if (($faseintermediaria+$fasecorrente)>0){
         $guardar=$ano[$controle]+($faseintermediaria+$fasecorrente);
       }else{
-        $guardar="";
+        $guardar=0;
       }
 
       if(!is_dir($conf."/In/pdf/".$id)){
@@ -57,6 +57,9 @@ for ($controle = 0; $controle < count($arquivo['name']); $controle++){
         $ise = $pdo->prepare("INSERT INTO Ko SET nome = '$complemento[$controle]',imagem = '$id',nome_pdf='$nomedocumento',
           tipo_doc='$cla',ano_doc='$ano[$controle]',data_inserido='$data',can='$can',fase_con='$fase1',fase_in='$fase2',
           destin_fin='$fase3',ano_ex='$guardar',usuarioname='$usuario',class_doc='$tipodoc[$controle]'");
+echo "INSERT INTO Ko SET nome = '$complemento[$controle]',imagem = '$id',nome_pdf='$nomedocumento',
+          tipo_doc='$cla',ano_doc='$ano[$controle]',data_inserido='$data',can='$can',fase_con='$fase1',fase_in='$fase2',
+          destin_fin='$fase3',ano_ex='$guardar',usuarioname='$usuario',class_doc='$tipodoc[$controle]'";
         $ise->execute();
       }else {
         $msg_erro .="-ERRO NO DOCUMENTO $nomedocumento - $controle <br>";
