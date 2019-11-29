@@ -50,7 +50,7 @@ if(!empty($_FILES['up_xml']['tmp_name'])){
       $sistema = isset($linha->getElementsByTagname('Data')->item(10)->nodeValue)
       ?$linha->getElementsByTagname('Data')->item(10)->nodeValue : "null";
       
-      $verid = $pdo->prepare("SELECT COUNT(*) AS total FROM alunos WHERE Num_mat LIKE '$matricula'");
+      $verid = $pdo->prepare("SELECT COUNT(*) AS total FROM Alunos WHERE Num_mat LIKE '$matricula'");
       $verid->execute();
       $total = $verid->fetchALL(PDO::FETCH_ASSOC);
       $total = $total[0]['total'];
