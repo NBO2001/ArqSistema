@@ -4,10 +4,6 @@ if($_SESSION['acesso']<>4){
 header("Location:index.php");
 die;
 }
-if(isset($_SESSION['ifon'])){
-  echo $_SESSION['ifon'];
-  unset ($_SESSION['ifon']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -53,8 +49,9 @@ if(isset($_SESSION['ifon'])){
       <span> -> O formato do arquivo  tem que está em xml.</span><br>
       <span>-> É de suma importancia que todos os espaços em brando esteja preenchidos com NULL.</span><br>
       <span>-> Não será inserido dados em que o número de matricula já está registrado no banco de dados.</span><br>
-      <span>-> A planilha deve obrigatoriamente ter 10 colunas na seguinte ordem:</span><br>
-      <span class='tab'>| Sigla_curso | Numero_matricula | Nome_civil | Nome do curso | Forma_ingresso | Forma_evassao | Ano_ingresso | Ano_evassao | Sistema | Nome_social |.</span><br>
+      <span>-> Inserir no máximo 50.000 dados!.</span><br>
+      <span>-> A planilha deve obrigatoriamente ter 11 colunas na seguinte ordem:</span><br>
+      <span class='tab'>| ID_PESSOA | NOME_PESSOA | FORMA_INGRESSO | FORMA_EVASAO| COD_CURSO | NOME_UNIDADE | MATR_ALUNO | PERIODO_INGRESSO | PERIODO_EVASAO | Nome_Social | SISTEMA |.</span><br>
     </div>
     <div id="formulario_upload">
     <form method="POST" action="upload_por_xml_funcao.php"  enctype="multipart/form-data">
@@ -65,5 +62,11 @@ if(isset($_SESSION['ifon'])){
     <button onclick="window.location.href='admini.php'">Voltar</button><br><br>
   </div>
   </div>
+  <?php
+  if(isset($_SESSION['ifon'])){
+    echo $_SESSION['ifon'];
+    unset ($_SESSION['ifon']);
+  }
+  ?>
 	</body>
 </html>
