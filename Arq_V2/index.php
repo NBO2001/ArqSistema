@@ -55,6 +55,6 @@ if(isset($_COOKIE["tema"]) AND $_COOKIE["tema"] <> "a"){
     </script>
 </body>
 <footer>
-  &copy;2019 N.B.O
-</footer>
+ <label >&copy;2019 N.B.O <br>Suporte: arquivo_proeg@ufam.edu.br<label>
+</footer> 
 </html>
