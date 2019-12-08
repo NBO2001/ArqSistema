@@ -40,7 +40,7 @@ if(isset($_COOKIE["tema"]) AND $_COOKIE["tema"] <> "a"){
 
     <input class="logbtn" name="btnlo" type="submit" value="Entrar"></input>
 
-
+  <br/><a href='recupera_senha.php'>Esqueceu a senha ?</a>
   </form>
     <script type="text/javascript">
     $(".txtb input").on("focus",function(){

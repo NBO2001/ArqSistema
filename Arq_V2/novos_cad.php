@@ -55,21 +55,51 @@ if(isset($_POST['btn_envia'])){
     $email = $_POST['email_uso'];
     $senhaci = md5($_POST['nova_senha']);
     if(isset($email) && isset($senhaci)){
+        $eml_duplicado = $pdo->prepare("SELECT email FROM log WHERE email LIKE '$email'");
+        $eml_duplicado->execute();
+        $valor_da = $eml_duplicado->fetchALL(PDO::FETCH_ASSOC);
+    if(empty($valor_da[0]['email'])){
         $up = $pdo->prepare("UPDATE log SET email = '$email', senha = '$senhaci' WHERE log.id=$id");
         $up->execute();
-        $mail->SetFrom($local);
-        $mail->AddAddress("$email");
-        $mail->Subject = "Arquivo Acâdemico";
-        $mail->Body = "Olá $uso, seus dados foram atualizados com sucesso.";
-    
-        if(!$mail->Send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-         } else {
-            echo "foi enviada";
-         }
+        $body_email = "
+        <table style='border: 1px solid black;font-family:Arial;text-align: center;'>
+        <thead>
+         <tr>
+           <th colspan='2'>
+               <img width='50px' height='50px' src='cid:logo'/><br/>
+             <label>
+             Universidade Federal do Amazonas<br>
+             Arquivo Acadêmico da PROEG<br>
+             </label>
+           </th>
+         </tr>   
+        </thead>
+         <tbody>
+          <tr>  
+            <td colspan='2'><a style='background:#4285f4;border-radius:6px;color:#ffffff;display:block;font-size:12px;font-weight:normal;letter-spacing:1px;padding:10px 24px;text-decoration:none' href='http://arquivoproeg.ddns.net'>Pressione aqui para acessar o sistema.</a></td>
+          </tr>
+          <tr>
+            <td style='font-size:17px;'>Login: </td>
+            <td style='font-size:17px;'>$uso</td> 
+           </tr>
+            <tr>
+              <td style='font-size:17px;'>Senha: </td>
+              <td style='font-size:17px;'>".$_POST['nova_senha']."</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th colspan='2'>Obrigado por se registrar em nosso sistema.<br/>Sugestões e ajuda entrar em contato com arquivo_proeg@ufam.edu.br</th>
+        </tfoot>
+        </table>";
+         enviar_email($email,$body_email);
         $_SESSION['ifon']="<script>alert('Dados atualizados com sucesso')</script>";
         header("Location:index.php");
         die;
+      }else{
+        $_SESSION['ifon']="<script>alert('Erro, email já cadastrado')</script>";
+        header("Location:index.php");
+        die;
+      }
     }else{
         $_SESSION['ifon']="<script>alert('Vazios')</script>";
         header("Location:index.php");

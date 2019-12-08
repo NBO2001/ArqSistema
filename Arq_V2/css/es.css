@@ -327,7 +327,43 @@ border-radius:25px;
   border-radius: 15px;
   border: 1px solid black;
 }
-
+#painel_usuarios{
+	text-align: center;
+	width: 520px;
+	height: 370px;
+	position: absolute;
+	top:150px;
+	font-size: 25px;
+	left: 200px;
+	border-radius:10px;
+	background-color: #FFDAB9;
+}
+#painel_usuarios input[type='submit']{
+	background-color: #E6E6FA;
+	text-align: center;
+	padding-left:3px;
+	padding-top:0px;
+	font-size: 15px;
+	border-radius: 15px;
+	width: 60px;
+	height:35px;
+}
+#painel_usuarios input{
+	font-size: 15px;
+}
+#painel_usuarios button{
+	background-color: #E6E6FA;
+	text-align: center;
+	padding-left:3px;
+	padding-top:0px;
+	font-size: 15px;
+	border-radius: 15px;
+	width: 90px;
+	height:35px;
+}
+#painel_usuarios input[type='submit']:hover{
+	background-color: #B0E0E6;
+}
 #verificar_ad_uso{
 	border:1px solid black;
 	border-radius:25px;
