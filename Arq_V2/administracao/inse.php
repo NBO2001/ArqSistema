@@ -1,6 +1,7 @@
 <?php
 require_once '../Conec_PDO.php';
 session_start();
+set_time_limit(0);
 if($_SESSION['acesso']<>4){
 header('Location:../index.php');
 die;
