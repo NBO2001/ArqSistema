@@ -17,15 +17,21 @@ $mail->IsHTML(true);
 
 $conf = fopen('conf.txt','r');
 $conf = fgets($conf, 1024);
+//$conf = substr($conf,0,-1);
+$caminho = "$conf/ml.txt";
 
-if (file_exists($conf.'/ml.txt')) {
-$arq = fopen($conf .'/ml.txt','r');
+if (file_exists($caminho)) {
+$arq = fopen($caminho,'r');
 $linha[] = '';
 while(!feof($arq)){
   $linha[] .= fgets($arq, 1024); 
 }
 $local  = $linha[1];
 $senha = $linha[2]; 
+}else{
+  $_SESSION['ifon']="<script>alert('Erro ao tentar enviar o email')</script>";
+  header("Location:index.php");
+  die;
 }
 $mail->Username = $local;
 $mail->Password = $senha;

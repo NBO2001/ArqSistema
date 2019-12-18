@@ -16,6 +16,7 @@ include_once 'ConAL.php';
    <meta http-equiv="refresh" content="120">
    <title>Tela inicial</title>
    <link rel="stylesheet" type="text/css" href="css/es.css">
+   <link type='image/x-icon' rel='shortcut icon' href='icones/ufamicon.ico'>
    <?php
    if(isset($_COOKIE["tema"])){
      $tema = $_COOKIE["tema"];
@@ -76,7 +77,7 @@ include_once 'ConAL.php';
  <input type="checkbox" id="chec">
  <nav id="nave" >
      <ul>
-       <li><a href="alterar_senha.php">Alterar senha</a></li>
+       <li><a href="alterar_senha.php">Perfil</a></li>
      <li><a href="altera_tema.php">Alterar tema</a></li>
      <?php
      if ($_SESSION['acesso']>=2){
@@ -94,12 +95,22 @@ include_once 'ConAL.php';
  </div>
 
  <div id="tela_inicial_tes" >
- <form  action="pg_pesquisa.php">
-   <button class="bntv1" id="btntest">Pesquisa por matrícula</button>
- </form><br>
- <form  action="pg_pesquisa_nome.php">
-   <button class="bntv1" id="btntest1">Pesquisa por nome</button>
- </form><br>
+<!-- <button class="bntv1" id="btntest" onclick="window.location.href='pg_pesquisa.php'">Pesquisa por matrícula</button><br><br>-->
+
+<input type="checkbox" id="check_btn1">
+<button class="bntv1" id="btntest"><label for="check_btn1">Pesquisa por matrícula</label></button><br>
+<form id="btn_pesquisa_mat" method="Post" action="pg_res_pes_mat.php" enctype="multipart/form-datan">
+	<input  minlength="8" maxlength="9" type="text" name="nume" placeholder="Digite a matrícula" required="">
+	<input name="pesqui" type="submit" value="Buscar">
+</form><br>
+
+<input type="checkbox" id="check_btn2">
+<button class="bntv1" id="btntest"><label for="check_btn2">Pesquisa por nome</label></button><br>
+<form id="btn_pesquisa_mat2" method="Post" action="psq_nome.php" enctype="multipart/form-datan">
+  <input type="text" name="nomeaa" placeholder="Digite o nome do aluno" minlength="3" required>
+  <input name="pesqui" type="submit" value="Buscar">
+</form><br>
+
  <?php
 if($_SESSION['acesso']==1){
    echo"<form  action='mensa_visu.php'>
@@ -122,7 +133,7 @@ $fun = "window.location.href='cor_etq.php'";
  </div>
  <?php
  if($_SESSION['acesso']<>1){
- echo "<div  id='chat'>
+ echo "<div id='chat_campo'><div  id='chat'>
 
  </div>
  <div>
@@ -130,9 +141,12 @@ $fun = "window.location.href='cor_etq.php'";
    <input type='text' name='msg' placeholder='Escreva a mensagen' autocomplete='off' required>
    <input type='submit' value='Enviar'>
    </form>
+ </div>
  </div>";
  }
  ?>
- <label id="copra">&copy;2019 N.B.O<label>
  </body>
+ <footer>
+ <label >&copy;2019 N.B.O <br>Suporte: arquivo_proeg@ufam.edu.br<label>
+</footer> 
  </html>

@@ -30,7 +30,7 @@ if(isset($_SESSION['usuarioname'])){
    <meta charset="utf=8">
    <title>Cadastros</title>
    <link rel="stylesheet" type="text/css" href="css/es.css">
-<link type='image/x-icon' rel='shortcut icon' href='ufamicon.ico'>
+   <link type='image/x-icon' rel='shortcut icon' href='icones/ufamicon.ico'>
  </head>
 <body>
  <div id='cd_novos'>
